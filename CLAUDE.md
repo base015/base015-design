@@ -1,44 +1,40 @@
 # base015 design — instructions for Claude
 
-**Use the design system in [`DESIGN.md`](./DESIGN.md) ("Base015 — soft charcoal, one signal") for everything you design or build for base015**: artifacts, Design canvases, slides, web pages, portal and website UI.
+**Use the design system in [`DESIGN.md`](./DESIGN.md) for everything you design or build for Base015**: artifacts, Design canvases, slides, web pages, the client portal, emails and documents.
 
-Key rules (full spec in `DESIGN.md`):
+## The rules that matter most
 
-- Dark only, soft charcoal rather than black. Canvas `#1C1C1A`, cards `#262624`, raised/interactive surfaces `#31312E`. Separate surfaces with that value step, never with shadows.
-- Text Ivory `#F4F4F0` (primary, same as the logo letters) and Ash `#C2C2BB` (muted). Borders: Slate `#6E6E69`, Mist `#E2E2DC`. Never `#FFFFFF` for text.
-- **Signal Yellow `#FFCB00` is the only accent.** Use it as a fill only for the single primary action per view (hover `#FFD633`, pressed `#E6B700`). Text on yellow is always Ink `#0E0E0E`, never white.
-- Other uses of yellow: a small 5–6px dot for active/new/live (echoing the logo's period), focus rings (2px, offset 3px), short yellow labels on the tint `rgba(255,203,0,0.14)`. No blue and no second accent.
-- Headings at weight 480 (530 max for the largest display), never 600/700. Body 16px / 400 / 1.5.
-- Pill radius (32–40px) for buttons, inputs, nav items and tags; 12px for cards; 4px for structural elements only.
-- 4px spacing base, 32px card padding, 1200px max content width, 112px section padding on long pages.
-- Pages follow the sample homepage (see "Layout" in `DESIGN.md`): headlines ending in a yellow full stop, stacked one-word-per-line section labels with a yellow dot, big stat rows, canvas/card bands alternating, at most two full Signal Yellow bands (proof moment and final call to action), and the giant "Base015." wordmark in the footer.
-
-Fonts: `arcadia` and `arcadiaDisplay` are not publicly available. Until base015 supplies its own files, use these substitutes from Google Fonts:
-
-- Body / UI: **Inter** (variable, so weights 360 / 420 / 480 work).
-- Display: **Archivo** with `font-stretch: 112%` (wide-set, close to Söhne Breit).
-- Logo only: **Inter Tight** 600.
+- **Two modes, one palette.** Use the semantic tokens in `DESIGN.md`.
+  - **Dark** (soft charcoal) is for the marketing site and the portal's dark mode: canvas `#1C1C1A`, card `#262624`, raised `#31312E`, text `#F4F4F0`, muted `#C2C2BB`.
+  - **Light** (Paper & Ink) is for the client portal (light-first), all emails and documents: canvas `#FCFCFA`, card `#F3F3EF`, raised `#E8E8E3`, text `#0E0E0E`, muted `#55554F`.
+- **Signal Yellow `#FFCB00` is the only accent, and it is a fill only, always with Ink `#0E0E0E` text**, in both modes.
+  - Never use it for text, icons, outlines, underlines or focus rings. Focus rings use the text colour.
+  - One yellow-filled action per view; at most two full yellow bands per page.
+  - The yellow dot is the motif: it marks active/new/live, sits before section labels, and ends headlines as a filled circle, echoing the logo's period.
+- **No shadows.** Surfaces separate by value (canvas → card → raised). Pill controls (32–40px radius), 12px cards, 4px structural corners.
+- **Type** (all free, SIL OFL, from Google Fonts; never commit font files): Inter Tight for headings (560, tracking −0.02em), Inter for body (16/1.5), Space Mono for uppercase labels and numbers.
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@100..900&family=Inter+Tight:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Inter+Tight:wght@100..900&family=Space+Mono:wght@400;700&display=swap">
 ```
 
-## Logo (use these exact parameters)
+## Logo
 
-Wordmark **"Base015."**, where the period is part of the logo.
+- Use the files in `assets/logo/` (outlined from Inter Tight 600): `wordmark-on-dark.svg`, `wordmark-on-light.svg`, `wordmark.svg` (`currentColor` letters).
+- As live text: "Base015" in Inter Tight 600, letter-spacing −0.035em, Ink `#0E0E0E` on light or `#F4F4F0` on dark, followed by a "." in Signal Yellow `#FFCB00`. The logo's period is the one yellow glyph allowed.
+- App icon: use `https://portal.base015.com/icon.svg` as-is. It's an Ink square with a Paper "B" and a yellow dot in the bottom-right corner.
 
-- Inter Tight SemiBold 600, letter-spacing -0.035em, written exactly "Base015." (capital B, the rest lowercase).
-- Letters: Ink `#0E0E0E` on light backgrounds, `#F4F4F0` on dark backgrounds (including the `#1C1C1A` UI).
-- Period: Signal Yellow `#FFCB00` in both light and dark.
-- About 18px in the site header and body size (16px) in the footer. It scales freely as a vector.
-- Markup: `<span style="font-family:'Inter Tight';font-weight:600;letter-spacing:-0.035em;color:#F4F4F0">Base015<span style="color:#FFCB00">.</span></span>`
+## Content
 
-App icon / compact mark (favicon, 512px app icon, Apple touch icon):
+- Voice: direct, plain-spoken, confident, local. Short sentences, no hype words.
+- Base015 makes video ads, monthly content and content systems for service businesses in Sacramento, Roseville and Folsom. It does **not** run or manage ads.
+- Never invent stats, clients or testimonials. Leave unconfirmed numbers as visible placeholders.
+- Client names, photos, logos and testimonials stay out of this public repo. They live in the private website repo and the private canvas.
 
-- Square with an Ink `#0E0E0E` background.
-- A "B" in Paper `#FCFCFA`, Inter Tight SemiBold, set large (~70% of the width) and slightly left of centre (~6%).
-- A Signal Yellow `#FFCB00` dot in the bottom-right corner, about 17% of the icon width, inset ~9%.
+## Reference
 
-Logo backgrounds outside the product: Paper `#FCFCFA` (light) and Ink `#0E0E0E` (dark).
+Reference canvas (private):
+- **System page:** logo, foundations, components, modes (light & dark) and the sample homepage in two parts.
+- **Explorations page:** how the accent, background and layout were chosen.
 
-Reference canvas (System page: logo, foundations, components, and the sample homepage in two parts; Explorations page: how the accent, background and layout were chosen): https://claude.ai/artifact/6iYh73GtszfrSt9WC2coxs
+https://claude.ai/artifact/6iYh73GtszfrSt9WC2coxs
