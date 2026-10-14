@@ -33,6 +33,8 @@
 
 ## Reference
 
+Design System (private, in the Base015 claude.ai account; use it for new Design canvases): https://claude.ai/artifact/LESK5APUsESsExz394RH36
+
 Reference canvas (private):
 - **System page:** logo, foundations, components, modes (light & dark) and the sample homepage in two parts.
 - **Explorations page:** how the accent, background and layout were chosen.
