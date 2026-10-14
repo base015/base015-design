@@ -22,7 +22,7 @@
 
 - Use the files in `assets/logo/` (outlined from Inter Tight 600): `wordmark-on-dark.svg`, `wordmark-on-light.svg`, `wordmark.svg` (`currentColor` letters).
 - As live text: "Base015" in Inter Tight 600, letter-spacing −0.035em, Ink `#0E0E0E` on light or `#F4F4F0` on dark, followed by a "." in Signal Yellow `#FFCB00`. The logo's period is the one yellow glyph allowed.
-- App icon: use `https://portal.base015.com/icon.svg` as-is. It's an Ink square with a Paper "B" and a yellow dot in the bottom-right corner.
+- App icon: use `assets/logo/app-icon.svg` as-is (a copy of the portal's `src/app/icon.svg`). It's an Ink square with a Paper "B" and a yellow dot in the bottom-right corner.
 
 ## Content
 

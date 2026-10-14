@@ -5,6 +5,7 @@
 | `wordmark-on-dark.svg` | Wordmark with Ivory `#F4F4F0` letters and a Signal Yellow `#FFCB00` period, for dark backgrounds |
 | `wordmark-on-light.svg` | Wordmark with Ink `#0E0E0E` letters and a Signal Yellow period, for light backgrounds |
 | `wordmark.svg` | Wordmark with `currentColor` letters (inherits the text colour) and a Signal Yellow period |
+| `app-icon.svg` | App icon (favicon, 512px app icon, Apple touch icon): Ink square, Paper "B", Signal Yellow dot |
 
 ## How the wordmark was made
 
@@ -19,4 +20,4 @@ Inter Tight is © The Inter Project Authors and licensed under the SIL Open Font
 
 ## App icon
 
-The app icon (favicon, 512px app icon, Apple touch icon) is published at `https://portal.base015.com/icon.svg`: an Ink `#0E0E0E` square, a Paper `#FCFCFA` "B" outline path, and a Signal Yellow dot in the bottom-right corner. It belongs at `assets/logo/icon.svg` and should be used as-is, not redrawn.
+`app-icon.svg` is a byte-for-byte copy of `src/app/icon.svg` from the `base015-portal` repo (main), the same file the portal serves at `https://portal.base015.com/icon.svg`. Use it as-is; don't redraw it. If the portal's icon changes, copy it again.

@@ -105,7 +105,7 @@ Files live in [`assets/logo/`](./assets/logo/). Use the files rather than redraw
 - `assets/logo/wordmark-on-dark.svg`, `wordmark-on-light.svg`, and `wordmark.svg` (letters use `currentColor`) are outlined from Inter Tight 600 with kerning and the −0.035em tracking applied, so they match the live text.
 - As live text: `<span style="font-family:'Inter Tight';font-weight:600;letter-spacing:-0.035em">Base015<span style="color:#FFCB00">.</span></span>`
 
-**App icon / compact mark:** favicon, 512px app icon, Apple touch icon. The source of truth is `https://portal.base015.com/icon.svg`: an Ink `#0E0E0E` square, a Paper "B" outline path, and a Signal Yellow dot in the bottom-right corner. Use it as-is; don't redraw it.
+**App icon / compact mark:** favicon, 512px app icon, Apple touch icon. Use [`assets/logo/app-icon.svg`](./assets/logo/app-icon.svg) as-is; don't redraw it. It's a copy of the portal's `src/app/icon.svg`, served at `https://portal.base015.com/icon.svg`: a 512×512 Ink `#0E0E0E` square, a Paper `#FCFCFA` "B" path, and a Signal Yellow dot in the bottom-right corner (r 43.5 at 409.6, 409.6).
 
 ---
 
