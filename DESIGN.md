@@ -1,25 +1,25 @@
-# Mercury — Style Reference
-> Alpine banking at blue hour
+# Base015 — Design System
+> Soft charcoal, one signal
 
 **Theme:** dark
 
-Source measurements are normalized; roles and recommendations are interpreted. Font summary lists are independent, not paired by position. HTML examples are reconstructions, not source components.
+Adapted from the "Mercury" style reference: its structure, type, spacing, shapes and flat elevation are kept, and its palette is rebuilt around the Base015 brand (Signal Yellow on soft charcoal). The original reference is in this file's git history.
 
-Mercury operates in an alpine banking aesthetic: a near-black canvas (#171721) sets a cinematic, observatory-like atmosphere where content surfaces float as subtly lighter graphite cards. The interface is overwhelmingly monochromatic — ivory text on onyx, with a single vivid cobalt (#5266eb) acting as the only chromatic punctuation, reserved exclusively for the primary 'Open account' action. Typography carries the weight of expression: a custom display face at intermediate weight 480 (neither bold nor light) paired with a refined body face at weight 400, creating a voice that is confident but never loud. Components are flat and borderless, relying on the 12px-radius graphite card lift and pill-shaped controls to define structure rather than shadows. The full-bleed photographic hero — misty mountains with a solitary desk — establishes aspiration before the product UI takes over, and every subsequent surface maintains that hushed, premium darkness.
+Base015 works in a hushed, premium dark aesthetic: a soft charcoal canvas (#1c1c1a), clearly not black, sets a calm atmosphere, and content surfaces float as subtly lighter charcoal cards. The neutrals are warm-neutral rather than blue-tinted, so they sit comfortably next to yellow and match the logo's #F4F4F0 letters. The interface is overwhelmingly monochromatic: ivory text on charcoal, with a single Signal Yellow (#ffcb00) as the only chromatic punctuation. It is reserved for the one primary action per view, plus a small yellow dot that marks "active", "new" or "live", echoing the period in the Base015. wordmark. Typography carries the weight of expression: a display face at intermediate weight 480 (neither bold nor light) paired with a body face at weight 400, creating a voice that is confident but never loud. Components are flat and borderless, relying on the 12px-radius card lift and pill-shaped controls to define structure rather than shadows.
 
 ## Tokens — Colors
 
 | Name | Value | Token | Role |
 |------|-------|-------|------|
-| Onyx Canvas | `#171721` | `--color-onyx-canvas` | Dominant page background, hero overlay base, footer and section canvases |
-| Graphite Card | `#1e1e2a` | `--color-graphite-card` | Elevated card and section surfaces — one step lighter than the canvas to create quiet separation |
-| Obsidian Button | `#272735` | `--color-obsidian-button` | Secondary button fills, inline form backgrounds, subtle interactive surfaces |
-| Slate Border | `#70707d` | `--color-slate-border` | Medium-weight dividers and structural borders between content blocks |
-| Mist Border | `#e2e3ed` | `--color-mist-border` | Light hairline borders, ghost-button outlines, input edges — light-on-dark border |
-| Ash Text | `#c3c3cc` | `--color-ash-text` | Muted body copy, helper text, secondary labels — reduced hierarchy without losing legibility |
-| Ivory Text | `#ededf3` | `--color-ivory-text` | Primary text, icons, nav items, ghost-button strokes and text — the dominant foreground color across the system |
-| Cobalt | `#5266eb` | `--color-cobalt` | Violet action color for filled buttons, selected navigation states, and focused conversion moments. |
-| Pure White | `#ffffff` | `--color-pure-white` | Text and icon fills on cobalt primary buttons for maximum contrast |
+| Soft Charcoal | `#1c1c1a` | `--color-canvas` | Dominant page background, hero overlay base, footer and section canvases |
+| Charcoal Card | `#262624` | `--color-card` | Elevated card and section surfaces — one step lighter than the canvas to create quiet separation |
+| Raised | `#31312e` | `--color-raised` | Secondary button fills, inline form backgrounds, subtle interactive surfaces |
+| Slate Border | `#6e6e69` | `--color-slate-border` | Medium-weight dividers and structural borders between content blocks |
+| Mist Border | `#e2e2dc` | `--color-mist-border` | Light hairline borders, ghost-button outlines, input edges — light-on-dark border |
+| Ash Text | `#c2c2bb` | `--color-ash-text` | Muted body copy, helper text, secondary labels — reduced hierarchy without losing legibility |
+| Ivory Text | `#f4f4f0` | `--color-ivory-text` | Primary text, icons, nav items, ghost-button strokes and text — the dominant foreground color across the system |
+| Signal Yellow | `#ffcb00` | `--color-signal-yellow` | The one chromatic note: filled primary action, the active/new dot, focus rings, and the logo's period |
+| Ink | `#0e0e0e` | `--color-ink` | Text and icon fills on Signal Yellow buttons (12.7:1), and the app-icon tile. Never use white on yellow |
 
 ## Tokens — Typography
 
@@ -94,32 +94,68 @@ Mercury operates in an alpine banking aesthetic: a near-black canvas (#171721) s
 - **Card padding:** 32px
 - **Element gap:** 12px
 
+## Logo
+
+Use these exact parameters. The logo keeps its own type; it is not set in the UI faces.
+
+**Wordmark "Base015."** (the period is part of the logo)
+- Inter Tight SemiBold 600 (Google Fonts, open licence), letter-spacing -0.035em, written exactly "Base015." (capital B, the rest lowercase).
+- Letters: Ink `#0E0E0E` on light backgrounds, `#F4F4F0` on dark backgrounds (including the #1c1c1a UI).
+- Period: Signal Yellow `#FFCB00` in both light and dark.
+- About 18px in the site header and body size (16px) in the footer. It scales freely as a vector.
+- Markup: `<span style="font-family:'Inter Tight';font-weight:600;letter-spacing:-0.035em;color:#F4F4F0">Base015<span style="color:#FFCB00">.</span></span>`
+
+**App icon / compact mark** (favicon, 512px app icon, Apple touch icon)
+- Square with an Ink `#0E0E0E` background (it reads as a slightly darker tile on the #1c1c1a canvas).
+- A "B" in Paper `#FCFCFA`, Inter Tight SemiBold, set large (~70% of the width) and slightly left of centre (~6%).
+- A Signal Yellow `#FFCB00` dot in the bottom-right corner, about 17% of the icon width, inset ~9%.
+
+Logo backgrounds outside the product: Paper `#FCFCFA` (light) and Ink `#0E0E0E` (dark).
+
+## Signal Yellow — usage
+
+| Name | Value | Use |
+|------|-------|-----|
+| Signal Yellow | `#ffcb00` | Primary action fill, active/new dot, focus ring, logo period |
+| Yellow Hover | `#ffd633` | Primary button hover |
+| Yellow Pressed | `#e6b700` | Primary button pressed |
+| Yellow Tint | `rgba(255,203,0,0.14)` | Tag and selected-row backgrounds, with yellow text |
+| On Yellow (Ink) | `#0e0e0e` | Text and icons on any yellow fill (12.7:1) |
+
+- One yellow-filled element per view: the primary action. Everything else stays ivory, ash and charcoal.
+- Text on yellow is always Ink #0e0e0e. Never white on yellow (1.5:1 fails contrast).
+- Yellow as text only for short labels, numbers and tags (11:1 on the canvas), never for paragraphs.
+- The dot is the motif: a 5–6px yellow circle marks "active", "new" or "live", echoing the logo's period.
+- Focus rings: 2px solid #ffcb00, offset 3px, on every interactive control.
+- Disabled primary: Raised #31312e fill with Ash #c2c2bb text.
+- No blue, and no second accent. Greens, reds and oranges only if a status system is ever needed, and then muted.
+
 ## Components
 
-### Primary CTA Button (Cobalt)
+### Primary CTA Button (Signal Yellow)
 **Role:** The sole chromatic action in the system — reserved for the most important conversion
 
-Filled with #5266eb Cobalt, white text at 16px arcadia weight 400, 32px border-radius (pill), 0px vertical padding with 20px horizontal padding for inline contexts, 40px vertical padding when standalone. No border, no shadow. The vivid blue against the dark canvas makes this button the gravitational center of any page.
+Filled with #ffcb00 Signal Yellow, Ink #0e0e0e text (never white) at 16px arcadia weight 480, 32px border-radius (pill), 0px vertical padding with 20px horizontal padding for inline contexts, 40px vertical padding when standalone. No border, no shadow. The vivid blue against the dark canvas makes this button the gravitational center of any page.
 
 ### Ghost Outline Button
 **Role:** Secondary or tertiary action on dark backgrounds
 
-Transparent background, 1px solid #ededf3 Ivory border, Ivory text at 16px arcadia weight 400, 40px border-radius (pill). Zero padding top/bottom with 20px horizontal padding. Used for navigation links and secondary CTAs where a filled button would overpower the layout.
+Transparent background, 1px solid #f4f4f0 Ivory border, Ivory text at 16px arcadia weight 400, 40px border-radius (pill). Zero padding top/bottom with 20px horizontal padding. Used for navigation links and secondary CTAs where a filled button would overpower the layout.
 
 ### Navigation Pill Link
 **Role:** Top-bar navigation items with optional dropdown caret
 
 Transparent background, no border, Ivory text at 16px arcadia weight 400, 40px border-radius, 0px vertical / 20px horizontal padding. Floats over the hero image and transitions to a solid dark fill on scroll via backdrop-blur.
 
-### Graphite Card
+### Charcoal Card
 **Role:** Content grouping surface — product features, feature blocks, and section containers
 
-Background #1e1e2a, 12px border-radius, 32px padding on all sides, no shadow, no border. The one-step lift from the #171721 canvas creates separation through subtle value contrast rather than elevation. Cards sit flat on the dark plane.
+Background #262624, 12px border-radius, 32px padding on all sides, no shadow, no border. The one-step lift from the #1c1c1a canvas creates separation through subtle value contrast rather than elevation. Cards sit flat on the dark plane.
 
 ### Email Capture Input (Pill, Left-Half)
 **Role:** Hero email input with attached submit button
 
-Transparent background, 1px solid #ededf3 Ivory border on left side only, Ivory text at 16px arcadia weight 400, border-radius 32px 0px 0px 32px (left-side pill, flat right edge where it meets the button), 20px left padding. Placeholder text in #c3c3cc Ash.
+Transparent background, 1px solid #f4f4f0 Ivory border on left side only, Ivory text at 16px arcadia weight 400, border-radius 32px 0px 0px 32px (left-side pill, flat right edge where it meets the button), 20px left padding. Placeholder text in #c2c2bb Ash.
 
 ### Full-Bleed Hero Section
 **Role:** Above-the-fold brand statement with photographic atmosphere
@@ -129,7 +165,7 @@ Transparent background, 1px solid #ededf3 Ivory border on left side only, Ivory 
 ### Transparent Top Navigation Bar
 **Role:** Primary site navigation overlaid on hero
 
-Full-width, fixed or sticky, transparent background over the hero image. Brand mark (Mercury logo with concentric-circle icon) on the left, nav links centered (Products, Solutions, Resources, About, Pricing), Log in text link and Cobalt 'Open account' pill button on the right. Uses backdrop-blur(8px or 20px) on scroll to create frosted-glass separation.
+Full-width, fixed or sticky, transparent background over the hero image. The Base015. wordmark (see Logo) on the left, nav links centered (Products, Solutions, Resources, About, Pricing), Log in text link and the Signal Yellow primary pill button on the right. Uses backdrop-blur(8px or 20px) on scroll to create frosted-glass separation.
 
 ### Disclaimer Banner
 **Role:** Legal/regulatory footnote strip at page bottom
@@ -139,43 +175,43 @@ Dark background (matches canvas or slightly lighter), small text at 12px arcadia
 ### Section Container
 **Role:** Horizontal content wrapper between hero and footer
 
-Full-width dark canvas (#171721) with inner content constrained to 1200px max-width, 72px vertical padding. Contains 2- or 3-column grids of Graphite Cards or text+image splits.
+Full-width dark canvas (#1c1c1a) with inner content constrained to 1200px max-width, 72px vertical padding. Contains 2- or 3-column grids of Charcoal Cards or text+image splits.
 
 ## Do's and Don'ts
 
 ### Do
-- Use Cobalt #5266eb exclusively for the single primary action per page — never as a decorative accent, icon fill, or secondary button
-- Set all cards to #1e1e2a with 12px radius and 32px padding — rely on the one-step value lift from the canvas, not shadows, for separation
-- Apply arcadiaDisplay weight 480 (not 600/700) for all headings — the intermediate weight is Mercury's signature restraint
+- Use Signal Yellow #ffcb00 as a fill exclusively for the single primary action per page — never as a decorative accent, icon fill, or secondary button
+- Set all cards to #262624 with 12px radius and 32px padding — rely on the one-step value lift from the canvas, not shadows, for separation
+- Apply arcadiaDisplay weight 480 (not 600/700) for all headings — the intermediate weight is the system's signature restraint
 - Use 32px or 40px pill radius for all interactive controls (buttons, inputs, nav items) — sharp 4px corners are reserved for structural elements only
 - Set body text at 16px arcadia weight 400 with 1.5 line-height — this is the density baseline for all content
 - Maintain 72px vertical rhythm between major sections — spacious density is part of the premium feel
-- Use ivory #ededf3 on ghost/outline buttons for both border and text — never use a chromatic color for secondary actions
+- Use ivory #f4f4f0 on ghost/outline buttons for both border and text — never use a chromatic color for secondary actions
 
 ### Don't
-- Do not use multiple bright accent colors — Cobalt is the only chromatic note; introducing greens, reds, or oranges breaks the monochrome discipline
-- Do not add drop shadows to cards or components — separation comes from the graphite-on-onyx value difference alone
+- Do not use multiple bright accent colors — Signal Yellow is the only chromatic note; introducing greens, reds, or oranges breaks the monochrome discipline
+- Do not add drop shadows to cards or components — separation comes from the card-on-canvas value difference alone
 - Do not use bold weights (700+) for headings — arcadiaDisplay at 480 is the ceiling
 - Do not use sharp corners (0–4px) on buttons, inputs, or nav items — the pill shape is non-negotiable
-- Do not use #ffffff for body text — always #ededf3 Ivory; pure white on dark creates harsh, cold contrast
-- Do not place Cobalt-filled elements next to each other without at least 32px gap — the vivid color creates visual competition when clustered
-- Do not use bright or saturated backgrounds for sections — every surface is either #171721 (canvas) or #1e1e2a (card); no mid-gray or colored bands
+- Do not use #ffffff for body text — always #f4f4f0 Ivory; pure white on charcoal creates harsh contrast
+- Do not place yellow-filled elements next to each other without at least 32px gap — the vivid color creates visual competition when clustered
+- Do not use bright or saturated backgrounds for sections — every surface is either #1c1c1a (canvas) or #262624 (card); no mid-gray or colored bands
 
 ## Surfaces
 
 | Level | Name | Value | Purpose |
 |-------|------|-------|---------|
-| 0 | Onyx Canvas | `#171721` | Base page background — hero overlay, section canvases, footer |
-| 1 | Graphite Card | `#1e1e2a` | Elevated content surface — product cards, feature blocks, form containers |
-| 2 | Obsidian Button | `#272735` | Interactive surface — secondary button fills, inline form attachments |
+| 0 | Soft Charcoal | `#1c1c1a` | Base page background — hero overlay, section canvases, footer |
+| 1 | Charcoal Card | `#262624` | Elevated content surface — product cards, feature blocks, form containers |
+| 2 | Raised | `#31312e` | Interactive surface — secondary button fills, inline form attachments |
 
 ## Elevation
 
-Mercury deliberately avoids shadows. All elevation is communicated through value contrast alone — the graphite card (#1e1e2a) sits one step lighter than the onyx canvas (#171721), creating perceptible separation without any drop shadow. This flat aesthetic keeps the interface feeling modern, digital, and weightless, letting the photographic hero imagery and cobalt accent do the emotional work.
+The system deliberately avoids shadows. All elevation is communicated through value contrast alone — the charcoal card (#262624) sits one step lighter than the soft charcoal canvas (#1c1c1a), creating perceptible separation without any drop shadow. This flat aesthetic keeps the interface feeling modern, digital, and weightless, letting the photographic hero imagery and the yellow accent do the emotional work.
 
 ## Imagery
 
-Cinematic full-bleed photography dominates the hero — atmospheric, aspirational landscapes (misty mountains, isolated desks in nature) that position banking as a contemplative, elevated experience. Photography is high-quality, slightly desaturated with cool tones, and treated with a subtle dark overlay to maintain text legibility. Below the hero, imagery shifts to product UI screenshots and abstract atmospheric backgrounds. No illustrations, no icons-as-art — visuals are photographic or purely functional. Icon style throughout the UI is minimal line/glyph style in Ivory, appearing in nav, buttons, and form elements.
+Cinematic full-bleed photography dominates the hero — atmospheric, aspirational scenes that feel contemplative and elevated. Photography is high-quality, slightly desaturated with neutral tones (avoid strong blue casts that fight the yellow), and treated with a subtle dark overlay to maintain text legibility. Below the hero, imagery shifts to product UI screenshots and abstract atmospheric backgrounds. No illustrations, no icons-as-art — visuals are photographic or purely functional. Icon style throughout the UI is minimal line/glyph style in Ivory, appearing in nav, buttons, and form elements.
 
 ## Layout
 
@@ -184,28 +220,28 @@ Full-bleed dark canvas throughout. Hero is 100vw full-bleed photographic with ce
 ## Agent Prompt Guide
 
 **Quick Color Reference**
-- Background (canvas): #171721 Onyx
-- Card surface: #1e1e2a Graphite
-- Primary text: #ededf3 Ivory
-- Muted text: #c3c3cc Ash
-- Border: #e2e3ed Mist
-- primary action: #5266eb (filled action)
+- Background (canvas): #1c1c1a Soft Charcoal
+- Card surface: #262624 Charcoal Card
+- Primary text: #f4f4f0 Ivory
+- Muted text: #c2c2bb Ash
+- Border: #e2e2dc Mist
+- Primary action: #ffcb00 Signal Yellow with Ink #0e0e0e text (filled action)
 
 **Example Component Prompts**
 
-1. Create a product feature card: background #1e1e2a Graphite, 12px border-radius, 32px padding all sides, no shadow. Heading at 28px arcadiaDisplay weight 480, letter-spacing 0.015em, color #ededf3 Ivory. Body text at 16px arcadia weight 400, line-height 1.5, color #ededf3 Ivory.
+1. Create a product feature card: background #262624 Charcoal Card, 12px border-radius, 32px padding all sides, no shadow. Heading at 28px arcadiaDisplay weight 480, letter-spacing 0.015em, color #f4f4f0 Ivory. Body text at 16px arcadia weight 400, line-height 1.5, color #f4f4f0 Ivory.
 
-2. Create a primary CTA button: background #5266eb Cobalt, white text at 16px arcadia weight 400, 32px border-radius (pill), no border, no shadow, 12px vertical / 24px horizontal padding. Text is 'Open account' or equivalent action label.
+2. Create a primary CTA button: background #ffcb00 Signal Yellow, Ink #0e0e0e text at 16px arcadia weight 400, 32px border-radius (pill), no border, no shadow, 12px vertical / 24px horizontal padding. Text is the page's primary action label, e.g. 'Get started'.
 
-3. Create a ghost/outline button: transparent background, 1px solid #ededf3 Ivory border, #ededf3 text at 16px arcadia weight 400, 40px border-radius, 10px vertical / 20px horizontal padding.
+3. Create a ghost/outline button: transparent background, 1px solid #f4f4f0 Ivory border, #f4f4f0 text at 16px arcadia weight 400, 40px border-radius, 10px vertical / 20px horizontal padding.
 
-4. Create a hero section: full-bleed (100vw), full-viewport height, photographic landscape background with dark overlay. Headline at 65px arcadiaDisplay weight 480, line-height 1.1, color #ffffff, centered. Subtext at 18px arcadia weight 480, color #ededf3 Ivory, centered, max-width 520px.
+4. Create a hero section: full-bleed (100vw), full-viewport height, photographic landscape background with dark overlay. Headline at 65px arcadiaDisplay weight 480, line-height 1.1, color #f4f4f0, centered. Subtext at 18px arcadia weight 480, color #f4f4f0 Ivory, centered, max-width 520px.
 
-5. Create an inline email capture form: flex row, no gap. Input — transparent background, 1px solid #ededf3 Ivory border (left + top + bottom only), #ededf3 text at 16px arcadia weight 400, placeholder in #c3c3cc Ash, border-radius 32px 0 0 32px, 14px vertical / 20px horizontal padding. Button — #5266eb Cobalt fill, white text at 16px arcadia weight 400, border-radius 0 32px 32px 0, 14px vertical / 24px horizontal padding, no border.
+5. Create an inline email capture form: flex row, no gap. Input — transparent background, 1px solid #f4f4f0 Ivory border (left + top + bottom only), #f4f4f0 text at 16px arcadia weight 400, placeholder in #c2c2bb Ash, border-radius 32px 0 0 32px, 14px vertical / 20px horizontal padding. Button — #ffcb00 Signal Yellow fill, Ink #0e0e0e text at 16px arcadia weight 400, border-radius 0 32px 32px 0, 14px vertical / 24px horizontal padding, no border.
 
 ## Typography Philosophy
 
-Mercury's type system uses two custom faces — arcadia for UI/body and arcadiaDisplay for headlines — both built on an intermediate weight axis (360, 420, 480, 530) that avoids the conventional bold/light binary. Heading weight 480 is the signature: it is heavier than regular but distinctly lighter than semibold, creating a voice that asserts without shouting. Display sizes use tight line-heights (1.1–1.15) with positive letter-spacing (0.01–0.02em), giving large text an architectural, wide-set quality. Body text stays at 16px weight 400 with generous 1.5 line-height. The overall effect is a voice that is measured, premium, and digitally native — never editorial, never corporate.
+The type system uses two custom faces — arcadia for UI/body and arcadiaDisplay for headlines — both built on an intermediate weight axis (360, 420, 480, 530) that avoids the conventional bold/light binary. Heading weight 480 is the signature: it is heavier than regular but distinctly lighter than semibold, creating a voice that asserts without shouting. Display sizes use tight line-heights (1.1–1.15) with positive letter-spacing (0.01–0.02em), giving large text an architectural, wide-set quality. Body text stays at 16px weight 400 with generous 1.5 line-height. The overall effect is a voice that is measured, premium, and digitally native — never editorial, never corporate.
 
 ## Similar Brands
 
@@ -222,19 +258,23 @@ Mercury's type system uses two custom faces — arcadia for UI/body and arcadiaD
 ```css
 :root {
   /* Colors */
-  --color-onyx-canvas: #171721;
-  --color-graphite-card: #1e1e2a;
-  --color-obsidian-button: #272735;
-  --color-slate-border: #70707d;
-  --color-mist-border: #e2e3ed;
-  --color-ash-text: #c3c3cc;
-  --color-ivory-text: #ededf3;
-  --color-cobalt: #5266eb;
-  --color-pure-white: #ffffff;
+  --color-canvas: #1c1c1a;
+  --color-card: #262624;
+  --color-raised: #31312e;
+  --color-slate-border: #6e6e69;
+  --color-mist-border: #e2e2dc;
+  --color-ash-text: #c2c2bb;
+  --color-ivory-text: #f4f4f0;
+  --color-signal-yellow: #ffcb00;
+  --color-signal-yellow-hover: #ffd633;
+  --color-signal-yellow-pressed: #e6b700;
+  --color-signal-yellow-tint: rgba(255, 203, 0, 0.14);
+  --color-ink: #0e0e0e;
+  --color-paper: #fcfcfa;
 
   /* Typography — Font Families */
-  --font-arcadia: 'arcadia', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-arcadiadisplay: 'arcadiaDisplay', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arcadia: 'arcadia', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arcadiadisplay: 'arcadiaDisplay', 'Archivo', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
   --text-caption: 12px;
@@ -305,9 +345,9 @@ Mercury's type system uses two custom faces — arcadia for UI/body and arcadiaD
   --radius-default: 4px;
 
   /* Surfaces */
-  --surface-onyx-canvas: #171721;
-  --surface-graphite-card: #1e1e2a;
-  --surface-obsidian-button: #272735;
+  --surface-canvas: #1c1c1a;
+  --surface-card: #262624;
+  --surface-raised: #31312e;
 }
 ```
 
@@ -316,19 +356,23 @@ Mercury's type system uses two custom faces — arcadia for UI/body and arcadiaD
 ```css
 @theme {
   /* Colors */
-  --color-onyx-canvas: #171721;
-  --color-graphite-card: #1e1e2a;
-  --color-obsidian-button: #272735;
-  --color-slate-border: #70707d;
-  --color-mist-border: #e2e3ed;
-  --color-ash-text: #c3c3cc;
-  --color-ivory-text: #ededf3;
-  --color-cobalt: #5266eb;
-  --color-pure-white: #ffffff;
+  --color-canvas: #1c1c1a;
+  --color-card: #262624;
+  --color-raised: #31312e;
+  --color-slate-border: #6e6e69;
+  --color-mist-border: #e2e2dc;
+  --color-ash-text: #c2c2bb;
+  --color-ivory-text: #f4f4f0;
+  --color-signal-yellow: #ffcb00;
+  --color-signal-yellow-hover: #ffd633;
+  --color-signal-yellow-pressed: #e6b700;
+  --color-signal-yellow-tint: rgba(255, 203, 0, 0.14);
+  --color-ink: #0e0e0e;
+  --color-paper: #fcfcfa;
 
   /* Typography */
-  --font-arcadia: 'arcadia', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-arcadiadisplay: 'arcadiaDisplay', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arcadia: 'arcadia', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arcadiadisplay: 'arcadiaDisplay', 'Archivo', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
   --text-caption: 12px;
