@@ -10,7 +10,8 @@ Key rules (full spec in `DESIGN.md`):
 - Other uses of yellow: a small 5–6px dot for active/new/live (echoing the logo's period), focus rings (2px, offset 3px), short yellow labels on the tint `rgba(255,203,0,0.14)`. No blue and no second accent.
 - Headings at weight 480 (530 max for the largest display), never 600/700. Body 16px / 400 / 1.5.
 - Pill radius (32–40px) for buttons, inputs, nav items and tags; 12px for cards; 4px for structural elements only.
-- 4px spacing base, 32px card padding, 72px between sections, 1200px max content width.
+- 4px spacing base, 32px card padding, 1200px max content width, 112px section padding on long pages.
+- Pages follow the sample homepage (see "Layout" in `DESIGN.md`): headlines ending in a yellow full stop, stacked one-word-per-line section labels with a yellow dot, big stat rows, canvas/card bands alternating, at most two full Signal Yellow bands (proof moment and final call to action), and the giant "Base015." wordmark in the footer.
 
 Fonts: `arcadia` and `arcadiaDisplay` are not publicly available. Until base015 supplies its own files, use these substitutes from Google Fonts:
 
@@ -40,4 +41,4 @@ App icon / compact mark (favicon, 512px app icon, Apple touch icon):
 
 Logo backgrounds outside the product: Paper `#FCFCFA` (light) and Ink `#0E0E0E` (dark).
 
-Reference canvas (System page: logo, foundations, components, sample page; Explorations page: how the accent and background were chosen): https://claude.ai/artifact/6iYh73GtszfrSt9WC2coxs
+Reference canvas (System page: logo, foundations, components, and the sample homepage in two parts; Explorations page: how the accent, background and layout were chosen): https://claude.ai/artifact/6iYh73GtszfrSt9WC2coxs

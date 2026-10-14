@@ -157,7 +157,7 @@ Background #262624, 12px border-radius, 32px padding on all sides, no shadow, no
 
 Transparent background, 1px solid #f4f4f0 Ivory border on left side only, Ivory text at 16px arcadia weight 400, border-radius 32px 0px 0px 32px (left-side pill, flat right edge where it meets the button), 20px left padding. Placeholder text in #c2c2bb Ash.
 
-### Full-Bleed Hero Section
+### Full-Bleed Hero Section (alternative)
 **Role:** Above-the-fold brand statement with photographic atmosphere
 
 100vw × ~100vh, no padding constraints, centered content stack. Headline in arcadiaDisplay at 65px weight 480, subtext in arcadia at 18px weight 480. A full-bleed photographic background (atmospheric landscape) sits behind a subtle dark overlay. Content max-width ~640px centered vertically and horizontally.
@@ -215,7 +215,33 @@ Cinematic full-bleed photography dominates the hero — atmospheric, aspirationa
 
 ## Layout
 
-Full-bleed dark canvas throughout. Hero is 100vw full-bleed photographic with centered headline + subtext + email-capture form stack (max-width ~640px). Below hero, content flows in 1200px max-width sections with 72px vertical padding, alternating between text-left/image-right 2-column splits and 3-column card grids for product features. Navigation is a transparent top bar overlaid on the hero, transitioning to a frosted-glass (backdrop-blur) solid dark fill on scroll. Footer is dark with disclaimer text. Vertical rhythm is generous — spacious density with large breathing room between sections. No sidebar navigation; all navigation lives in the top bar.
+The reference layout is the **sample homepage** on the canvas (System page, "Sample page — homepage", parts 1 and 2). Content sits in a 1200px max-width container with 24px side gutters. Sections use 112px vertical padding, and full-width bands alternate between the canvas `#1c1c1a` and card `#262624` so long pages have rhythm without extra colours. Navigation is a sticky top bar with backdrop blur; there is no sidebar navigation.
+
+### Homepage section order
+
+1. **Sticky nav:** wordmark left, five links, yellow "Get started" pill right.
+2. **Hero:** faint dot-grid texture; an eyebrow with a yellow dot; a very large display headline (up to ~92px, `font-stretch` 116%) ending in a yellow full stop; a lead paragraph; a yellow primary and a ghost secondary button; a side card listing industries. Below it, a row of four big stats (value + yellow full stop, label in Ash) under a hairline.
+3. **Work reel:** a horizontal strip of project cards on Ink `#0e0e0e`.
+4. **"Trusted by" logo row.**
+5. **Problem:** three cards, each led by a big yellow figure.
+6. **Services:** pill tabs on the left (active tab is yellow with Ink text) and a detail panel with "What's included" yellow ticks and a work image.
+7. **Client results:** one Signal Yellow quote card (Ink text, a big before → after figure), two case cards with three metrics each, then a project gallery.
+8. **Comparison table:** "Base015. vs the usual alternative", yellow ticks on our column; scrolls sideways on small screens.
+9. **Process:** four numbered steps; the first step's rule and number are yellow; deliverable tags as Raised pills.
+10. **Founder note:** portrait plus a short first-person letter and sign-off.
+11. **Testimonial wall:** a statement headline with the outcome in yellow, then quote cards in masonry columns.
+12. **Insights:** four article cards.
+13. **FAQ:** an accordion; the open item's icon turns yellow.
+14. **Final call to action:** a full Signal Yellow band with a huge three-line headline in Ink, three dot points and an Ink button.
+15. **Footer:** Ink background, link columns, then the **Base015.** wordmark at full page width (~19vw) with its yellow period, and a legal line.
+
+### Signature devices
+
+- **Yellow full stop:** major headlines and big stats end in a yellow period, echoing the logo. Use it on display text only, not on body copy.
+- **Stacked section labels:** a 200px left column with a yellow dot and an uppercase label set one word per line (13px, 0.08em tracking, Ash), beside the section's headline.
+- **Yellow bands:** at most two per page (one hero-adjacent proof moment and the final call to action). On yellow, all text and buttons are Ink.
+- **Dot-grid texture:** `radial-gradient(rgba(244,244,240,0.09) 1px, transparent 1.6px)` at 24px, used in the hero only.
+- **Giant footer wordmark:** the logo at full page width, uncropped.
 
 ## Agent Prompt Guide
 
