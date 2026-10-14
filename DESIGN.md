@@ -185,7 +185,7 @@ Full-width dark canvas (#1c1c1a) with inner content constrained to 1200px max-wi
 - Apply arcadiaDisplay weight 480 (not 600/700) for all headings — the intermediate weight is the system's signature restraint
 - Use 32px or 40px pill radius for all interactive controls (buttons, inputs, nav items) — sharp 4px corners are reserved for structural elements only
 - Set body text at 16px arcadia weight 400 with 1.5 line-height — this is the density baseline for all content
-- Maintain 72px vertical rhythm between major sections — spacious density is part of the premium feel
+- Maintain 72–112px vertical rhythm between major sections (112px on long marketing pages) — spacious density is part of the premium feel
 - Use ivory #f4f4f0 on ghost/outline buttons for both border and text — never use a chromatic color for secondary actions
 
 ### Don't
@@ -195,7 +195,7 @@ Full-width dark canvas (#1c1c1a) with inner content constrained to 1200px max-wi
 - Do not use sharp corners (0–4px) on buttons, inputs, or nav items — the pill shape is non-negotiable
 - Do not use #ffffff for body text — always #f4f4f0 Ivory; pure white on charcoal creates harsh contrast
 - Do not place yellow-filled elements next to each other without at least 32px gap — the vivid color creates visual competition when clustered
-- Do not use bright or saturated backgrounds for sections — every surface is either #1c1c1a (canvas) or #262624 (card); no mid-gray or colored bands
+- Do not use other colored or mid-gray section backgrounds — every surface is #1c1c1a (canvas), #262624 (card) or #0e0e0e (Ink: work reel, footer). The only exception is a full Signal Yellow band, at most two per page (proof card and final call to action)
 
 ## Surfaces
 
@@ -236,6 +236,9 @@ The reference layout is the **sample homepage** on the canvas (System page, "Sam
 15. **Footer:** Ink background, link columns, then the **Base015.** wordmark at full page width (~19vw) with its yellow period, and a legal line.
 
 ### Signature devices
+
+All of these are drawn on the canvas's Components board under "Page patterns".
+
 
 - **Yellow full stop:** major headlines and big stats end in a yellow period, echoing the logo. Use it on display text only, not on body copy.
 - **Stacked section labels:** a 200px left column with a yellow dot and an uppercase label set one word per line (13px, 0.08em tracking, Ash), beside the section's headline.
