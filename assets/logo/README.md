@@ -5,7 +5,7 @@
 | `wordmark-on-dark.svg` | Wordmark with Ivory `#F4F4F0` letters and a Signal Yellow `#FFCB00` period, for dark backgrounds |
 | `wordmark-on-light.svg` | Wordmark with Ink `#0E0E0E` letters and a Signal Yellow period, for light backgrounds |
 | `wordmark.svg` | Wordmark with `currentColor` letters (inherits the text colour) and a Signal Yellow period |
-| `app-icon.svg` | App icon (favicon, 512px app icon, Apple touch icon): Ink square, Paper "B", Signal Yellow dot |
+| `app-icon.svg` | App icon (favicon, 512px app icon, Apple touch icon): Ink square, Paper "B" followed by a Signal Yellow period ("B.") |
 
 ## How the wordmark was made
 
