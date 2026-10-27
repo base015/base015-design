@@ -1,167 +1,154 @@
-# Base015 — Design System
-> One signal, two modes
+# Base015 — Design System v2
+> Editorial paper, one yellow signal
 
-Base015 makes video ads and monthly content for service businesses in Sacramento, Roseville and Folsom. The system is quiet and premium: warm neutral surfaces, measured type, flat cards, pill-shaped controls. **Signal Yellow** (`#FFCB00`) is the only accent, and it is always a **fill with Ink text**, never text, icons or outlines.
+Base015 makes video ads and monthly content for service businesses in Sacramento, Roseville and Folsom. The system is light-first and editorial: a paper canvas, serif headlines at regular weight, flat 24px cards, pill controls in filled + ghost pairs, and colour rationed to the one thing to do next. **Signal Yellow** (`#FFCB00`) is the only accent and it is always a **fill with Ink text**: never text, icons, outlines or focus rings.
 
-It has two modes on one palette:
+v2 is inspired by two references: Steep (serif editorial on white paper, floating product cards, one rare accent card) and VEED (a video tool: a single accent for the main action, full-bleed dark bands, portrait media cards). Everything that is Base015 stays: the wordmark and app icon, Signal Yellow with Ink on it, the yellow dot, the voice, the real prices.
 
-| Mode | Where it is used |
-|------|------------------|
-| **Dark** (soft charcoal) | Marketing site, portal dark mode |
-| **Light** (Paper & Ink) | Client portal (light-first), every email, documents |
+| Surface | Mode |
+|---------|------|
+| Marketing website | **Light** (Paper & Ink). Ink bands for rhythm. |
+| Client portal | **Light-first**, with the charcoal **dark** mode as the user's choice |
+| Emails, documents | Light only |
 
-The structure (type scale, spacing, shapes, flat elevation) started from a "Mercury" style reference; the palette, type families and patterns are Base015's own. The reference canvas is linked from `CLAUDE.md`.
+Shared tokens for the website and portal: [`tokens/base015.css`](./tokens/base015.css).
 
 ---
 
-## Colour tokens
+## Colour
 
-Use the semantic tokens. Each has a light and a dark value; components never hard-code a mode.
+Semantic tokens; components never hard-code a mode.
 
 | Token | Role | Light | Dark |
 |-------|------|-------|------|
-| `--color-canvas` | Page background | `#FCFCFA` (Paper) | `#1C1C1A` (Soft charcoal) |
-| `--color-card` | Cards, alternating bands, panels | `#F3F3EF` | `#262624` |
-| `--color-raised` | Secondary buttons, active nav/tab pills, neutral tags, track of progress bars | `#E8E8E3` | `#31312E` |
-| `--color-divider` | Hairlines, table rules | `#D6D6D0` | `#6E6E69` |
-| `--color-border-strong` | Input edges (≥3:1 against canvas) | `#8A8A83` | `#8F8F8A` |
-| `--color-text` | Primary text, icons, ghost-button stroke | `#0E0E0E` (Ink) | `#F4F4F0` (Ivory) |
-| `--color-text-muted` | Secondary text, labels, captions | `#55554F` | `#C2C2BB` |
+| `--color-canvas` | Page background | `#FCFCFA` Paper | `#1C1C1A` Soft charcoal |
+| `--color-card` | Content cards, input fills, nested blocks | `#F3F3EF` Mist | `#262624` |
+| `--color-band` | Alternating section bands, hover surfaces | `#F8F8F5` Fog | `#222220` |
+| `--color-raised` | Secondary buttons, chips, progress tracks | `#E8E8E3` | `#31312E` |
+| `--color-hairline` | Card and input borders, dividers | `#E6E6E2` | `#3A3A37` |
+| `--color-rule` | Table rules, stronger separators | `#D6D6D0` | `#6E6E69` |
+| `--color-text` | Primary text, ghost-button stroke, focus ring | `#0E0E0E` Ink | `#F4F4F0` Ivory |
+| `--color-text-muted` | Leads, helper text, footer copy | `#55554F` | `#C2C2BB` |
+| `--color-text-smoke` | Placeholders, disabled labels, typographic tags | `#8A8A83` | `#8F8F8A` |
 | `--color-accent` | Signal Yellow — fills only | `#FFCB00` | `#FFCB00` |
-| `--color-accent-hover` | Primary hover | `#FFD633` | `#FFD633` |
-| `--color-accent-pressed` | Primary pressed | `#E6B700` | `#E6B700` |
+| `--color-accent-hover` | Primary pill hover | `#FFD633` | `#FFD633` |
+| `--color-accent-pressed` | Primary pill pressed | `#E6B700` | `#E6B700` |
+| `--color-accent-wash` | Soft emphasis behind text and badges, Ink on top | `#FFF3C4` | `#3D3410` |
 | `--color-on-accent` | Text and icons on any yellow fill | `#0E0E0E` | `#0E0E0E` |
-| `--color-focus` | Focus ring (2px, offset 3px) | `#0E0E0E` | `#F4F4F0` |
-| `--color-inverse` | Footer, media strips | `#0E0E0E` | `#0E0E0E` |
+| `--color-inverse` | Dark bands, footer, featured card | `#0E0E0E` | `#0E0E0E` |
+| `--color-on-inverse` | Text on inverse | `#F4F4F0` | `#F4F4F0` |
 
 Brand constants: Ink `#0E0E0E`, Paper `#FCFCFA`, Ivory `#F4F4F0`, Signal Yellow `#FFCB00`.
 
-Contrast (WCAG): text on canvas and card passes AA in both modes (muted text ≥6:1). Ink on yellow is 12.7:1. White on yellow is 1.5:1, so it is never used.
+**Status colours (portal only).** A portal needs success, warning and danger. They are muted so they never compete with yellow, and they are never used for marketing emphasis: success `#1E6B45` / soft `#E7F3EC`, warning `#8A5A00` / soft `#FDF3DC`, danger `#A3261D` / soft `#FBECEB`. Dark values are in `tokens/base015.css`.
+
+Contrast: text on canvas, card and band passes AA in both modes (muted ≥6:1). Ink on yellow is 12.7:1; white on yellow is 1.5:1 and never used. Smoke `#8A8A83` is for placeholders and tags only, never for sentences.
 
 ### Signal Yellow rules
 
-1. **Fill only.** Yellow appears as a background or a solid shape: the primary button, the selected tab, the open FAQ icon, a "New" tag, a progress fill, a tick disc, the small status dot, a full call-to-action band. It is never used for text, icons, outlines, underlines or focus rings.
-2. **Always Ink on top.** Anything placed on yellow is Ink `#0E0E0E`.
-3. **One yellow-filled action per view.** Small dots, tags and tick discs don't count; buttons do.
-4. **At most two full yellow bands per page**: one proof moment (a testimonial card) and the final call to action.
-5. **The dot is the motif.** A 5–6px yellow dot marks active, new or live items and sits before section labels. Headlines end in a yellow dot (a filled circle about 0.15em wide), echoing the logo's period. Don't rely on the dot alone to signal state: pair it with a raised fill or a label, because yellow on Paper is low-contrast.
-6. Yellow is the same in both modes. Do not darken it for light mode; keep Ink text on it.
-7. No second accent and no blue. If a status system is ever needed (errors, success), define it separately with muted tones and never let it compete with yellow.
+1. **Fill only, Ink on top.** The primary pill, the one editorial card, the selected tab, the open accordion icon, the brief composer's send disc, play discs on media, tick discs, progress fills, the small dot.
+2. **One yellow pill per view.** Every filled pill is paired with a ghost pill on the same row.
+3. **One yellow editorial card per page**, for the proof moment, on Paper or Mist, never on a dark band. It is the only chromatic surface on the page (Steep's accent-card role).
+4. **The wash is for emphasis, never for action**: a highlighted phrase, a trust badge, a note. Ink text on it.
+5. **The dot is the motif.** A 6px yellow dot sits before section labels and marks active, new or live items. Display headlines end in a filled yellow dot (~0.14em), echoing the logo's period. Never rely on the dot alone for state: pair it with a raised fill or a label.
+6. No second hue on marketing surfaces. Status colours exist only in the portal.
 
 ---
 
 ## Typography
 
-All families are free and open-licence (SIL Open Font License 1.1), loaded from Google Fonts. No font files are committed to this repo.
+Four families, all free (SIL OFL), loaded from Google Fonts. No font files are committed.
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Inter+Tight:wght@100..900&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Inter+Tight:wght@100..900&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap">
 ```
 
 | Family | Token | Use |
 |--------|-------|-----|
-| **Inter Tight** | `--font-display` | Headlines, prices, big numbers, the wordmark. Weight 560 for headings (500–600 range), 600 for the logo. Letter-spacing −0.02em to −0.025em. |
-| **Inter** | `--font-body` | Body, UI, buttons, inputs, tables. 400 body, 500 emphasis, 600 strong. |
-| **Space Mono** | `--font-mono` | Uppercase labels, section labels, step numbers, tokens, metadata. 11–12px, +0.04em tracking. Never for sentences. |
-
-Fallback stacks: display `'Inter Tight', 'Inter', system-ui, sans-serif`; body `'Inter', system-ui, sans-serif`; mono `'Space Mono', ui-monospace, monospace`. Emails fall back to Helvetica/Arial and Courier New.
+| **Instrument Serif** | `--font-display` | H1 and H2 only, 40px and up. Regular weight (400) at every size, never bold. One italic phrase per headline is allowed. Tracking −0.02em at 88px+, −0.015em at 44–64px; line-height 0.98–1.1. Never below 40px and never in UI. |
+| **Inter** | `--font-body` | Body, UI, buttons, inputs, tables, H3. 17px / 1.5 on the website, 16px in the portal. 400 body, 450 leads, 500 buttons, nav and H3. |
+| **Inter Tight** | `--font-numbers` | Prices, stats and the wordmark: 560 for numbers, 600 for the logo, tracking −0.02em. |
+| **Space Mono** | `--font-mono` | Uppercase 12px labels, step numbers, metadata, +0.04em. Never sentences. |
 
 ### Type scale
 
 | Role | Family | Size / line-height | Weight | Tracking |
 |------|--------|--------------------|--------|----------|
-| Display | Inter Tight | 65–92px / 1.0–1.02 (clamp on pages) | 560–600 | −0.025em |
-| Heading lg | Inter Tight | 42–56px / 1.05 | 560 | −0.025em |
-| Heading | Inter Tight | 32px / 1.15 | 560 | −0.02em |
-| Heading sm | Inter Tight | 28px / 1.2 | 560 | −0.02em |
-| Subheading | Inter | 21px / 1.35 | 500 | 0 |
-| Body lg | Inter | 18px / 1.45 | 400 | 0 |
-| Body | Inter | 16px / 1.5 | 400 | 0 |
-| Body sm | Inter | 14px / 1.4 | 400 | 0 |
+| Display | Instrument Serif | 88–96px / 0.98 (clamp on pages) | 400 | −0.02em |
+| Heading lg | Instrument Serif | 64px / 1.02 | 400 | −0.015em |
+| Heading | Instrument Serif | 44px / 1.1 | 400 | −0.015em |
+| Heading sm | Inter | 24–26px / 1.2 | 500 | −0.01em |
+| Subheading | Inter | 22px / 1.5 | 400 | 0 |
+| Lead | Inter | 18–20px / 1.4 | 450 | 0 |
+| Body | Inter | 17px / 1.5 (portal 16px) | 400 | 0 |
+| Caption | Inter | 14–15px / 1.5 | 400 | 0 |
 | Label | Space Mono | 12px / 1.3, uppercase | 400 | +0.04em |
-| Caption | Inter | 12px / 1.5 | 400 | 0 |
+| Price / stat | Inter Tight | 30–56px / 1 | 560 | −0.02em |
 
 ---
 
 ## Space, shape, elevation
 
-- **Spacing:** 4px base. Scale 4, 8, 12, 16, 20, 24, 32, 40, 56, 72, 112, 128.
-- **Layout:** 1200px max content width, 24px side gutters. Section padding 72px, 112px on long marketing pages. Card padding 32px (28px for dense cards). Element gap 12px.
-- **Radius:** 4px structural (image wells, table frames); 12px cards and panels; 32px buttons and inputs; 40px nav items, tags and ghost buttons; 50% dots and avatars.
-- **Elevation:** none. No shadows anywhere. Surfaces separate by value: canvas → card → raised.
-- **Touch targets:** at least 44px high.
+- **Spacing:** 4px base. 4, 8, 12, 16, 20, 24, 28, 32, 40, 48, 64, 80, 96, 112.
+- **Layout:** 1200px max width, 24px gutters. Section padding 80px (96px for Ink bands, 112px for the closing call to action). Card padding 28–32px, dense cards 20px. Element gap 8–12px.
+- **Radius:** `--radius-pill` 9999px for buttons, chips and tabs; `--radius-card` 24px for content cards; `--radius-small` 16px for inputs, small cards and the composer; `--radius-media` 12px for images and video stills; 20px for floating artifacts; 50% for dots, discs and avatars. Nothing under 12px on the website; the portal may use 8px for dense table chrome.
+- **Elevation:** flat. Surfaces separate by value (canvas → card → raised) and hairlines. **One exception:** the floating artifacts around the hero carry `--shadow-artifact`: `0 0 0 1px rgba(14,14,14,.06), 0 20px 25px -5px rgba(14,14,14,.10), 0 8px 10px -6px rgba(14,14,14,.10)`. Dialogs and menus in the portal use `--shadow-overlay`. Content cards never have a shadow.
+- **Touch targets:** 44px or more. Focus ring: 2px solid `--color-text`, offset 3px.
 
 ---
 
 ## Logo
 
-Files live in [`assets/logo/`](./assets/logo/). Use the files rather than redrawing.
+Files are in [`assets/logo/`](./assets/logo/). Use them rather than redrawing.
 
-**Wordmark "Base015."** (the period is part of the logo)
-- Inter Tight SemiBold 600, letter-spacing −0.035em, written exactly "Base015." (capital B, the rest lowercase).
-- Letters: Ink `#0E0E0E` on light backgrounds, `#F4F4F0` on dark.
-- Period: Signal Yellow `#FFCB00` in both modes. This is the one place yellow appears as a glyph, because it is the logo.
-- About 18–20px in site and portal headers; body size (16px) in footers; full page width (~19vw) as the closing footer wordmark. Scales freely as a vector.
-- `assets/logo/wordmark-on-dark.svg`, `wordmark-on-light.svg`, and `wordmark.svg` (letters use `currentColor`) are outlined from Inter Tight 600 with kerning and the −0.035em tracking applied, so they match the live text.
-- As live text: `<span style="font-family:'Inter Tight';font-weight:600;letter-spacing:-0.035em">Base015<span style="color:#FFCB00">.</span></span>`
+- **Wordmark "Base015."** (the period is part of the logo). Inter Tight 600, letter-spacing −0.035em; letters Ink on light, Ivory on dark; the period Signal Yellow in both. The outlined SVGs (`wordmark-on-light.svg`, `wordmark-on-dark.svg`, `wordmark.svg` with `currentColor` letters) match the live text exactly. As live text: `<span style="font-family:'Inter Tight';font-weight:600;letter-spacing:-0.035em">Base015<span style="color:#FFCB00">.</span></span>`. 18–20px in headers, 16px in footers, full page width (~19vw) as the closing footer wordmark.
+- **App icon:** `assets/logo/app-icon.svg`, a copy of the portal's `src/app/icon.svg`. Use as-is.
 
-**App icon / compact mark:** favicon, 512px app icon, Apple touch icon. Use [`assets/logo/app-icon.svg`](./assets/logo/app-icon.svg) as-is; don't redraw it. It's a copy of the portal's `src/app/icon.svg`, served at `https://portal.base015.com/icon.svg`: a 512×512 Ink `#0E0E0E` square with "B." in Inter Tight 600 outlines: a Paper `#FCFCFA` "B" followed by a Signal Yellow `#FFCB00` period on its baseline, a mini version of the wordmark. One dot only.
+The logo keeps Inter Tight; headlines are the serif. That contrast (sans wordmark, serif headlines) is intended, as in VEED.
 
 ---
 
 ## Components
 
-Every component below is drawn on the reference canvas (Components and Modes boards) in both modes.
+All are drawn on the reference canvas (System page).
 
-- **Primary button:** accent fill, on-accent text, 48–56px high, 32px radius, Inter 500. Hover `--color-accent-hover`, pressed `--color-accent-pressed`, disabled = raised fill with muted text.
-- **Ghost button:** transparent, 1px `--color-text` stroke, `--color-text` label, 40px radius.
-- **Secondary button:** raised fill, text colour.
-- **Text link:** text colour with an underline; hover lowers opacity. Never yellow.
-- **Navigation:** sticky bar, canvas at ~86% opacity with backdrop blur, hairline bottom border. Wordmark left, links as 44px pills, the yellow primary pill right. The active item gets a raised fill plus a yellow dot.
-- **Inputs:** 48–52px, 32px radius, 1px `--color-border-strong`; labels above in muted text; placeholder in muted text. Email capture: input with a flat right edge joined to a primary button.
-- **Tags:** 26–32px pills. Neutral tags use raised; "New" uses an accent fill with Ink text; status tags use a divider stroke plus a yellow dot.
-- **Cards:** card fill, 12px radius, 32px padding, no border or shadow. Featured cards may flip to inverse (Ink) with a divider stroke.
-- **Tick list:** a 20px yellow disc with an Ink check, then the text.
-- **Section header:** a 200px left column with a yellow dot and an uppercase Space Mono label, one word per line; on the right an Inter Tight headline ending in a yellow dot, and a muted lead paragraph.
-- **Stat row:** a hairline on top, four columns of Inter Tight values (ending in a yellow dot) over muted labels. Use real, confirmed numbers only.
-- **Service tabs:** a column of pill tabs (selected = accent fill, Ink text, mono number) next to a panel with a mono label, heading, body, tick list, optional price note on raised, and an image.
-- **Pricing cards:** mono kind label, name, Inter Tight price, one-line description. The featured pack is an inverse card with the yellow primary button.
-- **Comparison table:** a "Base015." column with tick discs against a muted alternative column; it scrolls sideways on small screens.
-- **Process steps:** a numbered (Space Mono) list; the current or first step has a yellow 2px top rule; deliverable tags on raised.
-- **Testimonials:** one yellow proof card (Inter Tight quote in Ink, photo, name, role) plus card-fill quote cards.
-- **FAQ accordion:** rows split by dividers; the toggle is a 32–36px circle on raised, which turns into an accent fill with an Ink "−" when open.
-- **Call-to-action band:** a full accent band, a huge Inter Tight headline in Ink, Ink dot points, and an Ink button with Ivory text.
-- **Footer:** inverse background, link columns with mono headings, the full-width wordmark, then a legal line.
-- **Partner logos:** client logos are dark artwork, so in dark mode they sit on Paper tiles (12px radius, 96px high); in light mode, on card tiles.
-- **Email (light only):** 600px wide on Paper, a wordmark header, mono eyebrow, Inter Tight heading, a details table on card, one yellow button, and a muted footer with the reason for the email.
+- **Primary pill:** accent fill, on-accent text, Inter 500, 44–52px high, `--radius-pill`. Hover `--color-accent-hover`, pressed `--color-accent-pressed`, disabled raised fill with smoke text. One per view.
+- **Ghost pill:** transparent, 1px `--color-text` stroke and label. The partner of every primary pill. On Ink bands the stroke and label are Ivory.
+- **Ink pill:** inverse fill, Ivory text. Portal sign-in and secondary conversion.
+- **Text link:** text colour, an arrow suffix, underline on hover only.
+- **Navigation:** no background, no border, no shadow (Steep). Wordmark left, 44px text links centre, a "Client portal" text link and the primary pill right. The active item carries the yellow dot. On scroll it may gain a Paper fill at 90% with a hairline.
+- **Floating artifacts:** 20px radius, Paper, `--shadow-artifact`, 200–360px wide, rotated ±1.5–3°, placed around the hero headline. The set for a video studio: a portrait reel still with a yellow play disc and a category chip; the booking card (shoot-length chips, a day picker, "Finished ads within 7 days"); a price stat with a gestural line; the brief composer. Nowhere else on the page has a shadow.
+- **Composer:** 16px radius, hairline, a one-line prompt ("Tell us what you need filmed…"), service chips, and a 40px yellow send disc. It leads to booking; it is not a chat.
+- **Inputs:** 52px, 16px radius, 1px hairline, label above in muted, placeholder in smoke. Card fill when inside a card.
+- **Cards:** Mist, 24px radius, 28–32px padding, no border or shadow. Sections alternate Paper and Fog bands. Featured card: inverse with the primary pill. Editorial card: accent fill, a serif quote in Ink, photo, name, role.
+- **Tags:** typographic, in smoke, no background (Steep). Status chips: the wash with Ink text, or a hairline chip with the yellow dot. Media chips: 12px white text on `rgba(14,14,14,.55)`, 6px radius, top-left of a still.
+- **Reel cards:** portrait 220×340, 12px radius, full-bleed still, category chip top-left, a 36px yellow play disc bottom-right; a horizontal row with 16px gaps and dot pagination (active 10px Ink, inactive 8px hairline).
+- **Dark band:** full-bleed inverse, 96px padding, a serif headline in Ivory, VEED's asymmetric 60/40 media grid at 16px radius with captions over the stills. The yellow play disc is the only colour on the band.
+- **Section header:** a 200px mono label column with the yellow dot (one word per line), then a serif headline ending in a yellow dot and a lead in muted.
+- **Accordion:** hairline rows, 68px, a 36px disc (hairline fill, Ink "+") that becomes accent with an Ink "−" when open.
+- **Process steps:** four Paper cards on a Fog band, mono step labels with the dot (yellow on the current step), H3, body, typographic tags.
+- **Closing call to action:** quiet, on Paper: a serif headline, a lead, the pill pair. Not a yellow band; the editorial card already spent the page's yellow surface.
+- **Footer:** inverse, link columns with mono headings, the full-width wordmark, a legal line.
+- **Portal frames:** the same tokens and radii at 16px body. Tables keep 1px rules; dialogs and menus use `--shadow-overlay` on Paper; the drawer scrim is `rgb(0 0 0 / .6)`. Status colours as listed above.
 
 ---
 
-## Page patterns
+## Page pattern (marketing homepage)
 
-The reference marketing page is the sample homepage on the canvas (two boards, because a canvas board is capped at 8,000px).
+1. Nav
+2. Hero: a wash badge (service area), a centred serif display headline with one italic phrase and the yellow dot, a lead, the pill pair; four floating artifacts around it
+3. Partner logo row (monochrome logos on Paper, no tiles)
+4. Services: three Mist cards on a Fog band
+5. Pricing: Mist price cards, the inverse Ad Pack card, a wash row for Monthly Content
+6. Ink work band: serif headline, 60/40 media grid of case studies, a ghost pill
+7. Testimonials: the one yellow editorial card plus two Mist quote cards
+8. Process on a Fog band
+9. Founder quote in the serif with portrait
+10. FAQ accordion on a Fog band
+11. Closing call to action with the pill pair
+12. Footer with the giant wordmark
 
-1. Sticky nav
-2. Hero: dot-grid texture, mono eyebrow with a dot, display headline ending in a yellow dot, lead paragraph, primary plus ghost button, and a "Who we work with" card; then a stat row.
-3. Media strip of recent shoots on inverse
-4. "Trusted by" partner logos on Paper tiles
-5. Problem: three numbered cards
-6. Services: tabs
-7. Pricing: shoot, editing and pack cards, plus a monthly-content row
-8. Selected work: case cards with cover image, category tag, headline, summary and one fact with a tick disc
-9. Testimonials: a yellow proof card plus two quote cards
-10. Comparison table
-11. Process: Book → Plan → Shoot → Deliver
-12. Founder quote with portrait
-13. FAQ accordion
-14. Yellow call-to-action band
-15. Footer with the giant wordmark
-
-Rules that carry across pages:
-- Bands alternate canvas and card.
-- Inverse (Ink) is only for media strips and the footer.
-- Use the dot-grid texture `radial-gradient(rgba(244,244,240,0.09) 1px, transparent 1.6px)` at 24px in the hero only (dark mode).
-- Real content only. Stats stay as visible placeholders until confirmed.
+Real content only. Stats stay as visible placeholders until confirmed.
 
 ---
 
@@ -173,113 +160,43 @@ Direct, plain-spoken, confident and local. Short sentences. No hype words. Say w
 
 ## Quick start
 
-```css
-:root,
-[data-theme="light"] {
-  --color-canvas: #FCFCFA;
-  --color-card: #F3F3EF;
-  --color-raised: #E8E8E3;
-  --color-divider: #D6D6D0;
-  --color-border-strong: #8A8A83;
-  --color-text: #0E0E0E;
-  --color-text-muted: #55554F;
-  --color-focus: #0E0E0E;
-}
+Load [`tokens/base015.css`](./tokens/base015.css) and the fonts link above. The website sets nothing (light is the default); the portal sets `data-theme="dark"` on `<html>` when the user chooses it. Emails inline the light values.
 
-[data-theme="dark"] {
-  --color-canvas: #1C1C1A;
-  --color-card: #262624;
-  --color-raised: #31312E;
-  --color-divider: #6E6E69;
-  --color-border-strong: #8F8F8A;
-  --color-text: #F4F4F0;
-  --color-text-muted: #C2C2BB;
-  --color-focus: #F4F4F0;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-canvas: #1C1C1A;
-    --color-card: #262624;
-    --color-raised: #31312E;
-    --color-divider: #6E6E69;
-    --color-border-strong: #8F8F8A;
-    --color-text: #F4F4F0;
-    --color-text-muted: #C2C2BB;
-    --color-focus: #F4F4F0;
-  }
-}
-
-:root {
-  /* Same in both modes */
-  --color-accent: #FFCB00;
-  --color-accent-hover: #FFD633;
-  --color-accent-pressed: #E6B700;
-  --color-on-accent: #0E0E0E;
-  --color-inverse: #0E0E0E;
-  --color-ink: #0E0E0E;
-  --color-paper: #FCFCFA;
-  --color-ivory: #F4F4F0;
-
-  --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'Space Mono', ui-monospace, monospace;
-
-  --space-4: 4px;  --space-8: 8px;   --space-12: 12px; --space-16: 16px;
-  --space-20: 20px; --space-24: 24px; --space-32: 32px; --space-40: 40px;
-  --space-56: 56px; --space-72: 72px; --space-112: 112px; --space-128: 128px;
-
-  --radius-structural: 4px;
-  --radius-card: 12px;
-  --radius-control: 32px;
-  --radius-pill: 40px;
-
-  --page-max-width: 1200px;
-  --focus-ring: 2px solid var(--color-focus);
-  --focus-offset: 3px;
-}
+```html
+<link rel="stylesheet" href="tokens/base015.css">
+<button class="btn btn-primary">Book a shoot</button>
+<button class="btn btn-ghost">See the work</button>
 ```
-
-The marketing site sets `data-theme="dark"` on `<html>`. The portal defaults to light and follows the user's choice. Emails are always light, with inline styles.
 
 ### Tailwind v4
 
-Tailwind v4 utilities read the `--color-*` variables at runtime, so declare the light values in `@theme` and override the same variables for dark mode. `bg-canvas`, `text-text-muted` and so on then switch automatically.
-
 ```css
 @import "tailwindcss";
+@import "./tokens/base015.css";
 
-@theme {
-  --color-canvas: #FCFCFA;
-  --color-card: #F3F3EF;
-  --color-raised: #E8E8E3;
-  --color-divider: #D6D6D0;
-  --color-border-strong: #8A8A83;
-  --color-text: #0E0E0E;
-  --color-text-muted: #55554F;
-  --color-focus: #0E0E0E;
-  --color-accent: #FFCB00;
-  --color-accent-hover: #FFD633;
-  --color-accent-pressed: #E6B700;
-  --color-on-accent: #0E0E0E;
-  --color-ink: #0E0E0E;
-  --color-paper: #FCFCFA;
-  --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'Space Mono', ui-monospace, monospace;
-  --radius-card: 12px;
-  --radius-control: 32px;
-  --radius-pill: 40px;
-}
-
-[data-theme="dark"] {
-  --color-canvas: #1C1C1A;
-  --color-card: #262624;
-  --color-raised: #31312E;
-  --color-divider: #6E6E69;
-  --color-border-strong: #8F8F8A;
-  --color-text: #F4F4F0;
-  --color-text-muted: #C2C2BB;
-  --color-focus: #F4F4F0;
+@theme inline {
+  --color-canvas: var(--color-canvas);
+  --color-card: var(--color-card);
+  --color-band: var(--color-band);
+  --color-raised: var(--color-raised);
+  --color-hairline: var(--color-hairline);
+  --color-rule: var(--color-rule);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-smoke: var(--color-text-smoke);
+  --color-accent: var(--color-accent);
+  --color-accent-wash: var(--color-accent-wash);
+  --color-on-accent: var(--color-on-accent);
+  --color-inverse: var(--color-inverse);
+  --color-on-inverse: var(--color-on-inverse);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+  --radius-pill: var(--radius-pill);
+  --radius-card: var(--radius-card);
+  --radius-small: var(--radius-small);
+  --radius-media: var(--radius-media);
 }
 ```
+
+`@theme inline` keeps the utilities pointing at the variables, so `bg-canvas` and `text-text-muted` switch with `data-theme` automatically.
