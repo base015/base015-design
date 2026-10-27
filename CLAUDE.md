@@ -1,28 +1,25 @@
 # base015 design — instructions for Claude
 
-**Use the design system in [`DESIGN.md`](./DESIGN.md) for everything you design or build for Base015**: artifacts, Design canvases, slides, web pages, the client portal, emails and documents.
+**Use the design system in [`DESIGN.md`](./DESIGN.md) (v2, "Editorial paper, one yellow signal") for everything you design or build for Base015**: the marketing website, the client portal, artifacts, Design canvases, slides, emails and documents. Load the shared tokens from [`tokens/base015.css`](./tokens/base015.css) rather than restating hex values.
 
 ## The rules that matter most
 
-- **Two modes, one palette.** Use the semantic tokens in `DESIGN.md`.
-  - **Dark** (soft charcoal) is for the marketing site and the portal's dark mode: canvas `#1C1C1A`, card `#262624`, raised `#31312E`, text `#F4F4F0`, muted `#C2C2BB`.
-  - **Light** (Paper & Ink) is for the client portal (light-first), all emails and documents: canvas `#FCFCFA`, card `#F3F3EF`, raised `#E8E8E3`, text `#0E0E0E`, muted `#55554F`.
-- **Signal Yellow `#FFCB00` is the only accent, and it is a fill only, always with Ink `#0E0E0E` text**, in both modes.
-  - Never use it for text, icons, outlines, underlines or focus rings. Focus rings use the text colour.
-  - One yellow-filled action per view; at most two full yellow bands per page.
-  - The yellow dot is the motif: it marks active/new/live, sits before section labels, and ends headlines as a filled circle, echoing the logo's period.
-- **No shadows.** Surfaces separate by value (canvas → card → raised). Pill controls (32–40px radius), 12px cards, 4px structural corners.
-- **Type** (all free, SIL OFL, from Google Fonts; never commit font files): Inter Tight for headings (560, tracking −0.02em), Inter for body (16/1.5), Space Mono for uppercase labels and numbers.
+- **Light-first.** Paper `#FCFCFA` canvas, Mist `#F3F3EF` cards, Fog `#F8F8F5` bands, Ink `#0E0E0E` text. The website is light with Ink bands for rhythm; the portal is light-first with the charcoal dark mode (`data-theme="dark"`, canvas `#1C1C1A`) as the user's choice; emails are light only.
+- **Signal Yellow `#FFCB00` is the only accent, and it is a fill only, always with Ink text**, in both modes. Never text, icons, outlines or focus rings (focus rings use the text colour).
+  - One yellow pill per view, always paired with a ghost pill. One yellow editorial card per page, never on a dark band. The wash `#FFF3C4` is for emphasis, never for actions.
+  - The yellow dot is the motif: before section labels, on active items, and ending display headlines as a filled circle.
+- **Type:** Instrument Serif for H1/H2 only (400, never bold, 40px+, one italic phrase allowed); Inter for body and UI (17px website, 16px portal); Inter Tight for prices, stats and the wordmark; Space Mono for uppercase labels. All free (SIL OFL) from Google Fonts; never commit font files.
+- **Shape:** pills for buttons and chips, 24px cards, 16px inputs and small cards, 12px media. **Flat:** no shadows, except the floating hero artifacts (`--shadow-artifact`) and portal overlays.
+- **Status colours** (success, warning, danger) exist only in the portal and stay muted.
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Inter+Tight:wght@100..900&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Inter+Tight:wght@100..900&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap">
 ```
 
 ## Logo
 
-- Use the files in `assets/logo/` (outlined from Inter Tight 600): `wordmark-on-dark.svg`, `wordmark-on-light.svg`, `wordmark.svg` (`currentColor` letters).
-- As live text: "Base015" in Inter Tight 600, letter-spacing −0.035em, Ink `#0E0E0E` on light or `#F4F4F0` on dark, followed by a "." in Signal Yellow `#FFCB00`. The logo's period is the one yellow glyph allowed.
-- App icon: use `assets/logo/app-icon.svg` as-is (a copy of the portal's `src/app/icon.svg`). It's an Ink square with "B.": a Paper "B" followed by a Signal Yellow period, like the wordmark. One dot only.
+- Use the files in `assets/logo/`: `wordmark-on-dark.svg`, `wordmark-on-light.svg`, `wordmark.svg` (`currentColor` letters), `app-icon.svg`.
+- As live text: "Base015" in Inter Tight 600, letter-spacing −0.035em, Ink on light or `#F4F4F0` on dark, followed by a "." in Signal Yellow. The logo's period is the one yellow glyph allowed. Headlines are the serif; the wordmark stays Inter Tight on purpose.
 
 ## Content
 
@@ -35,8 +32,6 @@
 
 Design System (private, in the Base015 claude.ai account; use it for new Design canvases): https://claude.ai/artifact/LESK5APUsESsExz394RH36
 
-Reference canvas (private):
-- **System page:** logo, foundations, components, modes (light & dark) and the sample homepage in two parts.
-- **Explorations page:** how the accent, background and layout were chosen.
-
-https://claude.ai/artifact/6iYh73GtszfrSt9WC2coxs
+Reference canvas (private): https://claude.ai/artifact/6iYh73GtszfrSt9WC2coxs
+- **System page:** v2 foundations, components, the sample homepage in two parts, and the logo.
+- **v1 (archived)** and **Explorations** pages: the earlier dark system and how the accent, background and layout were chosen.

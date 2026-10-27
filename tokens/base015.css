@@ -1,0 +1,214 @@
+/* Base015 design tokens v2 — shared by the website and the client portal.
+ * Light (Paper & Ink) is the default. The portal sets data-theme="dark" on <html>
+ * for its dark mode. Signal Yellow is a fill only, always with --color-on-accent on it.
+ * Spec: DESIGN.md. Fonts: load the Google Fonts link from DESIGN.md (none are committed here). */
+
+:root,
+[data-theme="light"] {
+  --color-canvas: #fcfcfa;
+  --color-card: #f3f3ef;
+  --color-band: #f8f8f5;
+  --color-raised: #e8e8e3;
+  --color-hairline: #e6e6e2;
+  --color-rule: #d6d6d0;
+  --color-text: #0e0e0e;
+  --color-text-muted: #55554f;
+  --color-text-smoke: #8a8a83;
+  --color-accent-wash: #fff3c4;
+  --color-focus: #0e0e0e;
+
+  /* Portal status (muted; never marketing emphasis) */
+  --color-success: #1e6b45;
+  --color-success-soft: #e7f3ec;
+  --color-warning: #8a5a00;
+  --color-warning-soft: #fdf3dc;
+  --color-danger: #a3261d;
+  --color-danger-soft: #fbeceb;
+
+  --shadow-overlay: 0 0 0 1px rgba(14, 14, 14, 0.06), 0 8px 40px rgba(14, 14, 14, 0.12);
+}
+
+[data-theme="dark"] {
+  --color-canvas: #1c1c1a;
+  --color-card: #262624;
+  --color-band: #222220;
+  --color-raised: #31312e;
+  --color-hairline: #3a3a37;
+  --color-rule: #6e6e69;
+  --color-text: #f4f4f0;
+  --color-text-muted: #c2c2bb;
+  --color-text-smoke: #8f8f8a;
+  --color-accent-wash: #3d3410;
+  --color-focus: #f4f4f0;
+
+  --color-success: #6fcf97;
+  --color-success-soft: #173424;
+  --color-warning: #e3b341;
+  --color-warning-soft: #3a2d0b;
+  --color-danger: #f28b82;
+  --color-danger-soft: #3b1a17;
+
+  --shadow-overlay: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+:root {
+  /* Constant in both modes */
+  --color-accent: #ffcb00;
+  --color-accent-hover: #ffd633;
+  --color-accent-pressed: #e6b700;
+  --color-on-accent: #0e0e0e;
+  --color-inverse: #0e0e0e;
+  --color-on-inverse: #f4f4f0;
+  --color-on-inverse-muted: #c2c2bb;
+  --color-ink: #0e0e0e;
+  --color-paper: #fcfcfa;
+  --color-ivory: #f4f4f0;
+  --color-overlay: rgb(0 0 0 / 0.6);
+
+  /* Type */
+  --font-display: "Instrument Serif", "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-numbers: "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  --text-display: clamp(48px, 7.4vw, 96px);
+  --leading-display: 0.98;
+  --tracking-display: -0.02em;
+  --text-heading-lg: clamp(36px, 4.6vw, 64px);
+  --leading-heading-lg: 1.02;
+  --text-heading: 44px;
+  --leading-heading: 1.1;
+  --tracking-heading: -0.015em;
+  --text-heading-sm: 24px;
+  --leading-heading-sm: 1.2;
+  --text-lead: 20px;
+  --leading-lead: 1.4;
+  --text-body: 17px;
+  --leading-body: 1.5;
+  --text-body-portal: 16px;
+  --text-caption: 14px;
+  --text-label: 12px;
+  --tracking-label: 0.04em;
+
+  /* Space */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+  --space-96: 96px;
+  --space-112: 112px;
+  --page-max-width: 1200px;
+  --page-gutter: 24px;
+
+  /* Shape */
+  --radius-pill: 9999px;
+  --radius-card: 24px;
+  --radius-artifact: 20px;
+  --radius-small: 16px;
+  --radius-media: 12px;
+  --radius-dense: 8px; /* portal table chrome only */
+
+  /* Elevation: flat, except floating artifacts and overlays */
+  --shadow-artifact: 0 0 0 1px rgba(14, 14, 14, 0.06), 0 20px 25px -5px rgba(14, 14, 14, 0.1), 0 8px 10px -6px rgba(14, 14, 14, 0.1);
+  --focus-ring: 2px solid var(--color-focus);
+  --focus-offset: 3px;
+  --touch-min: 44px;
+  --dot: 6px;
+}
+
+/* Portal variable mapping (src/app/globals.css names → v2 tokens). Keep until the portal reads the v2 names directly. */
+:root,
+[data-theme="dark"] {
+  --background: var(--color-canvas);
+  --surface: var(--color-canvas);
+  --raised: var(--color-card);
+  --subtle: var(--color-band);
+  --foreground: var(--color-text);
+  --muted: var(--color-text-muted);
+  --mid: var(--color-text-smoke);
+  --line: var(--color-hairline);
+  --accent: var(--color-accent);
+  --on-accent: var(--color-on-accent);
+  --panel: var(--color-canvas);
+  --overlay: var(--color-overlay);
+  --paper: var(--color-paper);
+  --success: var(--color-success);
+  --success-soft: var(--color-success-soft);
+  --warning: var(--color-warning);
+  --warning-soft: var(--color-warning-soft);
+  --danger: var(--color-danger);
+  --danger-soft: var(--color-danger-soft);
+}
+
+/* Base */
+html {
+  background: var(--color-canvas);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, .display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-heading);
+  margin: 0;
+}
+h1 { font-size: var(--text-display); line-height: var(--leading-display); letter-spacing: var(--tracking-display); }
+h2 { font-size: var(--text-heading-lg); line-height: var(--leading-heading-lg); }
+h3 { font-family: var(--font-body); font-weight: 500; font-size: var(--text-heading-sm); line-height: var(--leading-heading-sm); letter-spacing: -0.01em; margin: 0; }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: 1.3;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.num { font-family: var(--font-numbers); font-weight: 560; letter-spacing: -0.02em; }
+.dot { display: inline-block; width: var(--dot); height: var(--dot); border-radius: 50%; background: var(--color-accent); }
+.dot-end { display: inline-block; width: 0.14em; height: 0.14em; margin-left: 0.06em; border-radius: 50%; background: var(--color-accent); }
+
+/* Controls */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 22px; border-radius: var(--radius-pill);
+  font: 500 16px/1 var(--font-body); text-decoration: none; cursor: pointer; white-space: nowrap;
+  border: 1px solid transparent; background: transparent; color: var(--color-text);
+}
+.btn-primary { background: var(--color-accent); color: var(--color-on-accent); }
+.btn-primary:hover { background: var(--color-accent-hover); }
+.btn-primary:active { background: var(--color-accent-pressed); }
+.btn-primary:disabled { background: var(--color-raised); color: var(--color-text-smoke); cursor: default; }
+.btn-ghost { border-color: var(--color-text); }
+.btn-ink { background: var(--color-inverse); color: var(--color-on-inverse); }
+.btn:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: var(--focus-ring); outline-offset: var(--focus-offset);
+}
+
+.input {
+  min-height: 52px; padding: 0 18px; box-sizing: border-box; width: 100%;
+  border: 1px solid var(--color-hairline); border-radius: var(--radius-small);
+  background: var(--color-canvas); color: var(--color-text); font: 400 16px/1.5 var(--font-body);
+}
+.input::placeholder { color: var(--color-text-smoke); }
+
+.card { background: var(--color-card); border-radius: var(--radius-card); padding: var(--space-32) var(--space-28); }
+.card-inverse { background: var(--color-inverse); color: var(--color-on-inverse); border-radius: var(--radius-card); }
+.card-editorial { background: var(--color-accent); color: var(--color-on-accent); border-radius: var(--radius-card); }
+.artifact { background: var(--color-paper); color: var(--color-ink); border-radius: var(--radius-artifact); box-shadow: var(--shadow-artifact); }
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-radius: var(--radius-pill); font-size: 13px; }
+.chip-wash { background: var(--color-accent-wash); color: var(--color-on-accent); font-weight: 500; }
+.chip-line { box-shadow: inset 0 0 0 1px var(--color-hairline); }
