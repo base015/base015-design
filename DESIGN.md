@@ -29,7 +29,7 @@ Semantic tokens; components never hard-code a mode.
 | `--color-rule` | Table rules, stronger separators | `#D6D6D0` | `#6E6E69` |
 | `--color-text` | Primary text, ghost-button stroke, focus ring | `#0E0E0E` Ink | `#F4F4F0` Ivory |
 | `--color-text-muted` | Leads, helper text, footer copy | `#55554F` | `#C2C2BB` |
-| `--color-text-smoke` | Placeholders, disabled labels, typographic tags | `#8A8A83` | `#8F8F8A` |
+| `--color-text-smoke` | Placeholders and disabled labels | `#8A8A83` | `#8F8F8A` |
 | `--color-accent` | Signal Yellow — fills only | `#FFCB00` | `#FFCB00` |
 | `--color-accent-hover` | Primary pill hover | `#FFD633` | `#FFD633` |
 | `--color-accent-pressed` | Primary pill pressed | `#E6B700` | `#E6B700` |
@@ -42,7 +42,7 @@ Brand constants: Ink `#0E0E0E`, Paper `#FCFCFA`, Ivory `#F4F4F0`, Signal Yellow 
 
 **Status colours (portal only).** A portal needs success, warning and danger. They are muted so they never compete with yellow, and they are never used for marketing emphasis: success `#1E6B45` / soft `#E7F3EC`, warning `#8A5A00` / soft `#FDF3DC`, danger `#A3261D` / soft `#FBECEB`. Dark values are in `tokens/base015.css`.
 
-Contrast: text on canvas, card and band passes AA in both modes (muted ≥6:1). Ink on yellow is 12.7:1; white on yellow is 1.5:1 and never used. Smoke `#8A8A83` is for placeholders and tags only, never for sentences.
+Contrast: text on canvas, card and band passes AA in both modes (muted ≥6:1). Ink on yellow is 12.7:1; white on yellow is 1.5:1 and never used. Smoke `#8A8A83` is 3.4:1 on canvas and 3.1:1 on card, under AA for text, so it is for placeholders and disabled labels only, never for tags or sentences.
 
 ### Signal Yellow rules
 
@@ -121,7 +121,7 @@ All are drawn on the reference canvas (System page).
 - **Composer:** 16px radius, hairline, a one-line prompt ("Tell us what you need filmed…"), service chips, and a 40px yellow send disc. It leads to booking; it is not a chat.
 - **Inputs:** 52px, 16px radius, 1px hairline, label above in muted, placeholder in smoke. Card fill when inside a card.
 - **Cards:** Mist, 24px radius, 28–32px padding, no border or shadow. Sections alternate Paper and Fog bands. Featured card: inverse with the primary pill. Editorial card: accent fill, a serif quote in Ink, photo, name, role.
-- **Tags:** typographic, in smoke, no background (Steep). Status chips: the wash with Ink text, or a hairline chip with the yellow dot. Media chips: 12px white text on `rgba(14,14,14,.55)`, 6px radius, top-left of a still.
+- **Tags:** typographic, in muted, no background (Steep). Not smoke: tags are 14px text and need AA. Status chips: the wash with Ink text, or a hairline chip with the yellow dot. Media chips: 12px white text on `rgba(14,14,14,.55)`, 6px radius, top-left of a still.
 - **Reel cards:** portrait 220×340, 12px radius, full-bleed still, category chip top-left, a 36px yellow play disc bottom-right; a horizontal row with 16px gaps and dot pagination (active 10px Ink, inactive 8px hairline).
 - **Dark band:** full-bleed inverse, 96px padding, a serif headline in Ivory, VEED's asymmetric 60/40 media grid at 16px radius with captions over the stills. The yellow play disc is the only colour on the band.
 - **Section header:** a 200px mono label column with the yellow dot (one word per line), then a serif headline ending in a yellow dot and a lead in muted.
