@@ -1,33 +1,45 @@
-/* Base015 design tokens v2 — shared by the website and the client portal.
- * Light (Paper & Ink) is the default. The portal sets data-theme="dark" on <html>
- * for its dark mode. Signal Yellow is a fill only, always with --color-on-accent on it.
+/* Base015 design tokens v3 — shared by the website and the client portal.
+ * Dark-led: Ink is the default surface. Paper sections give rhythm (.surface-paper).
+ * The portal sets data-theme="light" or data-theme="dark" on <html>.
+ * Signal Yellow is a signal only: the main button, focus on dark, active states, small live dots.
+ * Always a fill with --color-on-accent on it; never text, never a large area.
  * Spec: DESIGN.md. Fonts: load the Google Fonts link from DESIGN.md (none are committed here). */
 
+/* Ink: the default surface, and any Ink section or card inside a Paper one. */
 :root,
+.surface-inverse {
+  --color-canvas: #0e0e0e;
+  --color-card: #161615;
+  --color-band: #161615;
+  --color-raised: #1f1f1d;
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  --color-rule: rgba(255, 255, 255, 0.16);
+  --color-text: #f4f4f0;
+  --color-text-muted: rgba(244, 244, 240, 0.64);
+  --color-text-smoke: rgba(244, 244, 240, 0.52);
+  --color-focus: #ffcb00;
+  /* Retired in v3 (was the pale-yellow wash). Kept as a neutral so old call sites do not break. */
+  --color-accent-wash: var(--color-raised);
+}
+
+/* Paper: light sections on the website, and the portal's light theme. Focus turns Ink: yellow fails on white. */
+.surface-paper,
 [data-theme="light"] {
   --color-canvas: #fcfcfa;
   --color-card: #f3f3ef;
-  --color-band: #f8f8f5;
+  --color-band: #f3f3ef;
   --color-raised: #e8e8e3;
-  --color-hairline: #e6e6e2;
-  --color-rule: #d6d6d0;
+  --color-hairline: rgba(14, 14, 14, 0.08);
+  --color-rule: rgba(14, 14, 14, 0.16);
   --color-text: #0e0e0e;
   --color-text-muted: #55554f;
-  --color-text-smoke: #8a8a83;
-  --color-accent-wash: #fff3c4;
+  --color-text-smoke: #6e6e68;
   --color-focus: #0e0e0e;
-
-  /* Portal status (muted; never marketing emphasis) */
-  --color-success: #1e6b45;
-  --color-success-soft: #e7f3ec;
-  --color-warning: #8a5a00;
-  --color-warning-soft: #fdf3dc;
-  --color-danger: #a3261d;
-  --color-danger-soft: #fbeceb;
-
-  --shadow-overlay: 0 0 0 1px rgba(14, 14, 14, 0.06), 0 8px 40px rgba(14, 14, 14, 0.12);
+  /* Retired in v3 (was the pale-yellow wash). Kept as a neutral so old call sites do not break. */
+  --color-accent-wash: var(--color-raised);
 }
 
+/* Charcoal: the portal's dark theme, softer than Ink for long sessions. */
 [data-theme="dark"] {
   --color-canvas: #1c1c1a;
   --color-card: #262624;
@@ -38,57 +50,84 @@
   --color-text: #f4f4f0;
   --color-text-muted: #c2c2bb;
   --color-text-smoke: #8f8f8a;
-  --color-accent-wash: #3d3410;
-  --color-focus: #f4f4f0;
+  --color-focus: #ffcb00;
+  /* Retired in v3 (was the pale-yellow wash). Kept as a neutral so old call sites do not break. */
+  --color-accent-wash: var(--color-raised);
+}
 
+.surface-inverse,
+.surface-paper {
+  background: var(--color-canvas);
+  color: var(--color-text);
+}
+
+/* Portal only: status colours (muted; never marketing emphasis) and overlay shadows. */
+:root,
+[data-theme="dark"] {
   --color-success: #6fcf97;
   --color-success-soft: #173424;
   --color-warning: #e3b341;
   --color-warning-soft: #3a2d0b;
   --color-danger: #f28b82;
   --color-danger-soft: #3b1a17;
-
   --shadow-overlay: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 8px 40px rgba(0, 0, 0, 0.5);
 }
 
+[data-theme="light"] {
+  --color-band: #f8f8f5;
+  --color-success: #1e6b45;
+  --color-success-soft: #e7f3ec;
+  --color-warning: #8a5a00;
+  --color-warning-soft: #fdf3dc;
+  --color-danger: #a3261d;
+  --color-danger-soft: #fbeceb;
+  --shadow-overlay: 0 0 0 1px rgba(14, 14, 14, 0.06), 0 8px 40px rgba(14, 14, 14, 0.12);
+}
 :root {
-  /* Constant in both modes */
+  /* Constant on every surface */
   --color-accent: #ffcb00;
   --color-accent-hover: #ffd633;
   --color-accent-pressed: #e6b700;
   --color-on-accent: #0e0e0e;
   --color-inverse: #0e0e0e;
   --color-on-inverse: #f4f4f0;
-  --color-on-inverse-muted: #c2c2bb;
+  --color-on-inverse-muted: rgba(244, 244, 240, 0.64);
   --color-ink: #0e0e0e;
+  --color-ink-hover: #2a2a28;
   --color-paper: #fcfcfa;
   --color-ivory: #f4f4f0;
   --color-overlay: rgb(0 0 0 / 0.6);
 
-  /* Type */
-  --font-display: "Instrument Serif", "Source Serif 4", Georgia, serif;
+  /* Type: Archivo for headings, prices and big numbers (weight and width axes); Inter for everything else. */
+  --font-display: "Archivo", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
-  --font-numbers: "Inter Tight", "Inter", system-ui, sans-serif;
-  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-numbers: "Archivo", system-ui, sans-serif;
+  /* Space Mono is retired; anything still asking for mono gets the text face. */
+  --font-mono: "Inter", system-ui, sans-serif;
 
-  --text-display: clamp(48px, 7.4vw, 96px);
-  --leading-display: 0.98;
-  --tracking-display: -0.02em;
-  --text-heading-lg: clamp(36px, 4.6vw, 64px);
-  --leading-heading-lg: 1.02;
-  --text-heading: 44px;
-  --leading-heading: 1.1;
-  --tracking-heading: -0.015em;
-  --text-heading-sm: 24px;
-  --leading-heading-sm: 1.2;
-  --text-lead: 20px;
-  --leading-lead: 1.4;
-  --text-body: 17px;
-  --leading-body: 1.5;
+  --text-hero: clamp(56px, 5.6vw, 84px); /* homepage H1 from 1024px */
+  --text-display: clamp(48px, 5.6vw, 88px); /* H1 */
+  --leading-display: 0.95;
+  --tracking-display: -0.035em;
+  --weight-display: 800;
+  --width-display: 115;
+  --text-heading-lg: clamp(40px, 4.6vw, 72px); /* H2 */
+  --leading-heading-lg: 1;
+  --tracking-heading: -0.03em;
+  --weight-heading: 700;
+  --width-heading: 112;
+  --text-heading-sm: clamp(24px, 1.3rem + 0.4vw, 28px); /* H3 */
+  --leading-heading-sm: 1.15;
+  --weight-heading-sm: 600;
+  --text-lead: 18px;
+  --text-body: 17px; /* 18px from 1024px on the website */
+  --text-body-lg: 18px;
+  --leading-body: 1.55;
   --text-body-portal: 16px;
-  --text-caption: 14px;
-  --text-label: 12px;
-  --tracking-label: 0.04em;
+  --text-label: 15px;
+  --text-min: 14px; /* nothing in the UI goes under this */
+  --measure: 60ch;
+  --measure-lead: 46ch;
 
   /* Space */
   --space-4: 4px;
@@ -97,36 +136,42 @@
   --space-16: 16px;
   --space-20: 20px;
   --space-24: 24px;
-  --space-28: 28px;
   --space-32: 32px;
   --space-40: 40px;
   --space-48: 48px;
+  --space-56: 56px;
   --space-64: 64px;
-  --space-80: 80px;
+  --space-72: 72px;
   --space-96: 96px;
-  --space-112: 112px;
-  --page-max-width: 1200px;
-  --page-gutter: 24px;
+  --space-120: 120px;
+  --page-max-width: 1360px;
+  --page-gutter: 24px; /* 16px on phones */
+  --section-y: 120px; /* 72px on phones */
 
   /* Shape */
   --radius-pill: 9999px;
-  --radius-card: 24px;
-  --radius-artifact: 20px;
+  --radius-card: 20px;
   --radius-small: 16px;
-  --radius-media: 12px;
+  --radius-media: 16px;
+  --radius-icon: 9px; /* 32px icon squares; 7px at 24px */
   --radius-dense: 8px; /* portal table chrome only */
 
-  /* Elevation: flat, except floating artifacts and overlays */
-  --shadow-artifact: 0 0 0 1px rgba(14, 14, 14, 0.06), 0 20px 25px -5px rgba(14, 14, 14, 0.1), 0 8px 10px -6px rgba(14, 14, 14, 0.1);
-  --focus-ring: 2px solid var(--color-focus);
+  /* Elevation: flat. Only portal overlays carry a shadow (--shadow-overlay). */
+  --focus-width: 2px;
   --focus-offset: 3px;
   --touch-min: 44px;
-  --dot: 6px;
+  --dot: 8px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-reveal: 600ms;
 }
 
-/* Portal variable mapping (src/app/globals.css names → v2 tokens). Keep until the portal reads the v2 names directly. */
+/* Portal variable mapping (src/app/globals.css names → token names). Keep until the portal reads the token names directly. */
 :root,
-[data-theme="dark"] {
+[data-theme] {
   --background: var(--color-canvas);
   --surface: var(--color-canvas);
   --raised: var(--color-card);
@@ -150,65 +195,208 @@
 
 /* Base */
 html {
+  color-scheme: dark;
   background: var(--color-canvas);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--text-body);
   line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html[data-theme="light"] {
+  color-scheme: light;
+}
+::selection {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
 }
 
-h1, h2, .display {
+h1, h2, h3, .display, .heading-lg, .heading-sm, .num {
   font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: var(--tracking-heading);
-  line-height: var(--leading-heading);
   margin: 0;
 }
-h1 { font-size: var(--text-display); line-height: var(--leading-display); letter-spacing: var(--tracking-display); }
-h2 { font-size: var(--text-heading-lg); line-height: var(--leading-heading-lg); }
-h3 { font-family: var(--font-body); font-weight: 500; font-size: var(--text-heading-sm); line-height: var(--leading-heading-sm); letter-spacing: -0.01em; margin: 0; }
-
-.label {
-  font-family: var(--font-mono);
-  font-size: var(--text-label);
-  line-height: 1.3;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+h1, .display {
+  font-size: var(--text-display);
+  font-weight: var(--weight-display);
+  font-stretch: 115%;
+  font-variation-settings: "wdth" var(--width-display);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-display);
+  text-wrap: balance;
 }
-.num { font-family: var(--font-numbers); font-weight: 560; letter-spacing: -0.02em; }
-.dot { display: inline-block; width: var(--dot); height: var(--dot); border-radius: 50%; background: var(--color-accent); }
-.dot-end { display: inline-block; width: 0.14em; height: 0.14em; margin-left: 0.06em; border-radius: 50%; background: var(--color-accent); }
+h2, .heading-lg {
+  font-size: var(--text-heading-lg);
+  font-weight: var(--weight-heading);
+  font-stretch: 112%;
+  font-variation-settings: "wdth" var(--width-heading);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-heading-lg);
+  text-wrap: balance;
+}
+h3, .heading-sm {
+  font-size: var(--text-heading-sm);
+  font-weight: var(--weight-heading-sm);
+  font-stretch: 100%;
+  letter-spacing: -0.01em;
+  line-height: var(--leading-heading-sm);
+}
+/* Lead: one per section at most, muted, 46ch. */
+.lead {
+  font-size: var(--text-lead);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+  max-width: var(--measure-lead);
+}
+/* Small text label (subheadings, footer column titles): Inter, normal case, no tracking. Never an overline above a heading. */
+.label {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-transform: none;
+}
+/* Prices and big numbers. */
+.num {
+  font-weight: 800;
+  font-stretch: 115%;
+  font-variation-settings: "wdth" 115;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* The yellow dot: live or active states only (the current nav item, a live signal). */
+.dot,
+.live-dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.dot { width: 6px; height: 6px; }
+.live-dot { position: relative; }
+@media (prefers-reduced-motion: no-preference) {
+  .live-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: inherit;
+    animation: live-pulse 2.4s ease-out infinite;
+  }
+}
+@keyframes live-pulse {
+  from { transform: scale(1); opacity: 0.6; }
+  to { transform: scale(3); opacity: 0; }
+}
+
+/* Layout: 1360px container, 12 columns (4 on phones), 120px between sections (72px on phones). */
+.page-x {
+  width: 100%;
+  max-width: calc(var(--page-max-width) + 48px);
+  margin-inline: auto;
+  padding-inline: 16px;
+  box-sizing: border-box;
+}
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 16px;
+}
+.band {
+  padding-block: 72px;
+}
+@media (min-width: 640px) {
+  .page-x { padding-inline: var(--page-gutter); }
+}
+@media (min-width: 768px) {
+  .grid-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+  .band { padding-block: var(--section-y); }
+}
 
 /* Controls */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  min-height: 48px; padding: 0 22px; border-radius: var(--radius-pill);
-  font: 500 16px/1 var(--font-body); text-decoration: none; cursor: pointer; white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 52px; padding: 0 24px; border-radius: var(--radius-pill);
+  font: 600 16px/1 var(--font-body); text-decoration: none; cursor: pointer; white-space: nowrap;
   border: 1px solid transparent; background: transparent; color: var(--color-text);
+  transition: background-color var(--duration-fast), border-color var(--duration-fast), color var(--duration-fast);
 }
+.btn-sm { min-height: 44px; padding: 0 20px; font-size: 15px; }
+/* The main action: one in view. */
 .btn-primary { background: var(--color-accent); color: var(--color-on-accent); }
 .btn-primary:hover { background: var(--color-accent-hover); }
 .btn-primary:active { background: var(--color-accent-pressed); }
-.btn-primary:disabled { background: var(--color-raised); color: var(--color-text-smoke); cursor: default; }
-.btn-ghost { border-color: var(--color-text); }
-.btn-ink { background: var(--color-inverse); color: var(--color-on-inverse); }
-.btn:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, button:focus-visible {
-  outline: var(--focus-ring); outline-offset: var(--focus-offset);
-}
+.btn-primary:disabled { background: var(--color-raised); color: var(--color-text-smoke); cursor: not-allowed; }
+/* The secondary: an outline in the text colour at 24% that fills with the text colour on hover. */
+.btn-ghost { border-color: color-mix(in srgb, var(--color-text) 24%, transparent); }
+.btn-ghost:hover { border-color: var(--color-text); background: var(--color-text); color: var(--color-canvas); }
+/* A solid button in the text colour: white on Ink, Ink on Paper. */
+.btn-ink { background: var(--color-text); color: var(--color-canvas); }
+.btn-ink:hover { background: color-mix(in srgb, var(--color-text) 85%, transparent); }
 
+/* Standalone text link: underline on hover only. Never a main action. */
+.text-link {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color var(--duration-fast);
+}
+.text-link:hover { text-decoration-color: currentColor; }
+/* A link inside running text keeps its underline. */
+.prose-link { color: var(--color-text); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+.prose-link:hover { text-decoration-thickness: 2px; }
+
+/* Fields: a yellow ring on focus on dark surfaces (Ink on Paper); a 2px text-colour border when invalid. */
 .input {
   min-height: 52px; padding: 0 18px; box-sizing: border-box; width: 100%;
   border: 1px solid var(--color-hairline); border-radius: var(--radius-small);
-  background: var(--color-canvas); color: var(--color-text); font: 400 16px/1.5 var(--font-body);
+  background: var(--color-card); color: var(--color-text); font: 400 16px/1.5 var(--font-body);
+  transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
 }
 .input::placeholder { color: var(--color-text-smoke); }
+.input:hover { border-color: var(--color-rule); }
+.input:focus, .input:focus-visible { outline: none; border-color: var(--color-focus); box-shadow: 0 0 0 1px var(--color-focus); }
+.input[aria-invalid="true"] { border: 2px solid var(--color-text); }
 
-.card { background: var(--color-card); border-radius: var(--radius-card); padding: var(--space-32) var(--space-28); }
-.card-inverse { background: var(--color-inverse); color: var(--color-on-inverse); border-radius: var(--radius-card); }
-.card-editorial { background: var(--color-accent); color: var(--color-on-accent); border-radius: var(--radius-card); }
-.artifact { background: var(--color-paper); color: var(--color-ink); border-radius: var(--radius-artifact); box-shadow: var(--shadow-artifact); }
-.chip { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-radius: var(--radius-pill); font-size: 13px; }
-.chip-wash { background: var(--color-accent-wash); color: var(--color-on-accent); font-weight: 500; }
-.chip-line { box-shadow: inset 0 0 0 1px var(--color-hairline); }
+/* Surfaces */
+.card { background: var(--color-card); border-radius: var(--radius-card); padding: var(--space-32); }
+.media { border-radius: var(--radius-media); overflow: hidden; background: var(--color-raised); }
+/* Status chip: a hairline pill, 14px. */
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 32px; padding: 0 12px;
+  border-radius: var(--radius-pill); font-size: 14px; line-height: 1; color: var(--color-text);
+  box-shadow: inset 0 0 0 1px var(--color-rule);
+}
+/* Neutral badge on the raised surface. */
+.badge {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 16px;
+  border-radius: var(--radius-pill); background: var(--color-raised); color: var(--color-text);
+  font-size: 14px; font-weight: 500;
+}
+/* A 16px line icon (1.5 stroke, currentColor) in a rounded square of the block's raised colour. */
+.icon-tile {
+  display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: var(--radius-icon);
+  background: var(--color-raised); color: var(--color-text);
+}
+.icon-tile-sm { width: 24px; height: 24px; border-radius: 7px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
